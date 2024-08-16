@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "127544205553",
+    "project_id": "education-ccb33",
+    "storage_bucket": "education-ccb33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127544205553:android:3b5449f01239dd4cde0950",
+        "android_client_info": {
+          "package_name": "com.example.education"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127544205553-t51c1aqn2ldgbpr4vlknmvv8757huj7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOtz3jujYKZdTmuTHxxIjFSYirOGd7rhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127544205553-t51c1aqn2ldgbpr4vlknmvv8757huj7m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "127544205553-e83jer40kjga97sp6mq9vo194gjjdfhi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.education"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

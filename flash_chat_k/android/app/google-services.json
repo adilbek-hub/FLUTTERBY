@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "519467762315",
+    "project_id": "arat-b4517",
+    "storage_bucket": "arat-b4517.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519467762315:android:6634ee2fc8fe6ba36b4a8e",
+        "android_client_info": {
+          "package_name": "com.example.flash_chat_k"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519467762315-it54bt12a7bedit1fca0t1mr8dce7ple.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB87Dls9LAmTQrDTU6qqQhB1uEhcR4RQw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519467762315-it54bt12a7bedit1fca0t1mr8dce7ple.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

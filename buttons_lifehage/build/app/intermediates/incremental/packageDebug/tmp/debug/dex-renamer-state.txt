@@ -1,0 +1,4 @@
+#Wed Aug 23 12:00:03 KGT 2023
+base.0=D\:\\FLUTTER2023\\buttons_lifehage\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,4 @@
+#Fri Aug 25 12:45:10 KGT 2023
+base.0=D\:\\FLUTTER2023\\image_picker_from_camera_gallery\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

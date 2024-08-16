@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "414344671612",
+    "project_id": "lala-75113",
+    "storage_bucket": "lala-75113.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414344671612:android:18c41134d478a4b5a3b4f9",
+        "android_client_info": {
+          "package_name": "com.tatadev.lalafolike"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs30rQPfkiLF4E-r68RNzJrOgeU5eiBq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381638467761",
+    "project_id": "uploadimageexample-43367",
+    "storage_bucket": "uploadimageexample-43367.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381638467761:android:6993608152095f1a4e8290",
+        "android_client_info": {
+          "package_name": "com.example.upload_image_to_firestore_storage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA99EzaR13Wg9s-W1eoA-5Ysy7Ey36oMlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "418759506814",
+    "project_id": "asiastore-61b4b",
+    "storage_bucket": "asiastore-61b4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418759506814:android:c977e80fedc48aae4b112f",
+        "android_client_info": {
+          "package_name": "com.example.flesh_chat_j"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418759506814-8fofq7fbriqkcr7a76acmvmokododu9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZe-eMxtrGdbi9nta4bjZkd3cssTTjukE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418759506814-8fofq7fbriqkcr7a76acmvmokododu9q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

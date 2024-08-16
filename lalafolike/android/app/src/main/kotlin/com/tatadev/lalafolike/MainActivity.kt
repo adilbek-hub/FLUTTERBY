@@ -1,0 +1,5 @@
+package com.tatadev.lalafolike
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity()

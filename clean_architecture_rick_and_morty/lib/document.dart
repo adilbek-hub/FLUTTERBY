@@ -1,0 +1,1 @@
+//usecases это место где выплняется бизнес логика. У нас usecases будут два класса класс GetAppPersons, SearchPerson. 

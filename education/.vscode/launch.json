@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Flutter (lib\\model\\another_all.dart)",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib\\model\\another_all.dart"
+        }
+    ]
+}
