@@ -1,14 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ytp/constants/enams/assets_constants.dart';
-import 'package:ytp/core/theme/color_constants.dart';
-import 'package:ytp/core/theme/get_theme_mode_color.dart';
 import 'package:ytp/router/router.dart';
 
 @RoutePage()
-class BoardingPage extends StatelessWidget {
-  const BoardingPage({super.key});
+class BottomNavPage extends StatelessWidget {
+  const BottomNavPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +68,6 @@ class NavigationBars extends StatelessWidget {
         }),
       ),
       child: NavigationBar(
-        backgroundColor: getThemeModeColor.brightnessColor(
-          context,
-          lightColor: ColorConstants.white,
-          darkColor: ColorConstants.darkContainerColor,
-        ),
         selectedIndex: tabsRouter.activeIndex,
         onDestinationSelected: tabsRouter.setActiveIndex,
         destinations: <Widget>[

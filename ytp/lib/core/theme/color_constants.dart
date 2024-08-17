@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 
-final class ColorConstants {
-  static const Color primary = Color(0xffCB4609);
-  static const Color pink = Color(0xffFFD3BF);
-  static const Color black = Color(0xff363636);
-  static const Color lightConatinerColor = Color.fromARGB(255, 213, 218, 225);
-  static const Color darkContainerColor = Color.fromARGB(255, 61, 70, 80);
-  static const Color lightTextColor = Color.fromARGB(255, 125, 139, 156);
-  static const Color darkTextColor = Color.fromARGB(255, 194, 215, 239);
-  static const Color lightIconColor = Color.fromARGB(255, 125, 139, 156);
-  static const Color lightPrimary = Color.fromARGB(20, 203, 70, 9);
-  static const Color darkbgcolor = Color.fromARGB(255, 20, 25, 31);
-  static const Color white = Colors.white;
-  static const Color grey = Color(0xffA4A4A4);
-  static const Color darkGrey = Color(0xff606060);
-  static const Color favoriteIconColor = Color(0xffB7B7B7);
-  static const Color lightGrey = Color(0xffECECEC);
-  static const Color yellow = Color(0xffDA9000);
-  static const Color lightYellow = Color(0xffFCB900);
-  static const Color red = Color(0xffFF0000);
-  static const Color disLightRed = Color.fromARGB(113, 255, 0, 0);
-  static const Color green = Color.fromARGB(255, 120, 206, 125);
-  static const Color lightGreen = Color(0xffF1F1F1);
-  static const Color lightContainerColor = Color(0xffF7F7F7);
-  static const Color blue = Color(0xff0AB4DE);
+class ColorConstants {
+  // Background
+  static const Color background1 = Color(0xffFDFDFD);
+  static const Color background2 = Color(0xff62D489);
+  // Accent
+  static const Color primaryAccent = Color(0xff242424);
+  static const Color secondaryAccent = Color(0xff62D489);
+  static const Color tertiaryAccent = Color(0xff18374A);
+  // Text
+  static const Color primaryText = Color(0xffFDFDFD);
+  static const Color secondaryText = Color(0xff242424);
+  static const Color tertiaryText = Color(0xffC8CAD2);
+  static const Color quaternaryText = Color(0xff18374A);
+  static const Color lastText = Color(0xff979797);
+  // Icon
+  static const Color primaryIcon = Color(0xff242424);
+  static const Color secondaryIcon = Color(0xff18374A);
+  static const Color tertiaryIcon = Color(0xffC8CAD2);
+  static const Color quaternaryIcon = Color(0xffFDFDFD);
+  // Layers
+  static const Color primaryLayers = Color(0xffF6F6F6);
+  static const Color secondaryLayers = Color(0xffE6E6E6);
+  static const Color tertiaryLayers = Color(0xff18374A);
+  static const Color redLayers = Color(0xffD72929);
+  static const Color greenLayers = Color(0xff62D489);
+  static const Color yellowLayers = Color(0xffD7A629);
+  static const Color blueLayers = Color(0xff6290D4);
+  static const Color purpleLayers = Color(0xff9F29D7);
 }

@@ -21,16 +21,28 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const BayPage(),
       );
     },
-    BoardingRoute.name: (routeData) {
+    BottomNavRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const BoardingPage(),
+        child: const BottomNavPage(),
       );
     },
     ConvertRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ConvertPage(),
+      );
+    },
+    OnBoardingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OnBoardingPage(),
+      );
+    },
+    PreloadedRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PreloadedPage(),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -63,15 +75,15 @@ class BayRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [BoardingPage]
-class BoardingRoute extends PageRouteInfo<void> {
-  const BoardingRoute({List<PageRouteInfo>? children})
+/// [BottomNavPage]
+class BottomNavRoute extends PageRouteInfo<void> {
+  const BottomNavRoute({List<PageRouteInfo>? children})
       : super(
-          BoardingRoute.name,
+          BottomNavRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'BoardingRoute';
+  static const String name = 'BottomNavRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -86,6 +98,34 @@ class ConvertRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ConvertRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OnBoardingPage]
+class OnBoardingRoute extends PageRouteInfo<void> {
+  const OnBoardingRoute({List<PageRouteInfo>? children})
+      : super(
+          OnBoardingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OnBoardingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PreloadedPage]
+class PreloadedRoute extends PageRouteInfo<void> {
+  const PreloadedRoute({List<PageRouteInfo>? children})
+      : super(
+          PreloadedRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PreloadedRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
