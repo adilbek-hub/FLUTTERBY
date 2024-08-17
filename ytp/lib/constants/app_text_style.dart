@@ -11,13 +11,21 @@ class TextStyles {
     decoration: TextDecoration.none,
     textBaseline: TextBaseline.alphabetic,
   );
+  static const TextStyle body1black = TextStyle(
+    color: Color(0xff242424),
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: 18,
+    letterSpacing: 0,
+    decoration: TextDecoration.none,
+    textBaseline: TextBaseline.alphabetic,
+  );
 
   static const TextStyle body = TextStyle(
-    color: Colors.black,
+    color: Color(0xff222222),
     fontFamily: 'Inter',
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
     fontSize: 32,
-    height: 1,
     letterSpacing: 0,
     decoration: TextDecoration.none,
     textBaseline: TextBaseline.alphabetic,
@@ -54,6 +62,15 @@ class TextStyles {
     decoration: TextDecoration.none,
     textBaseline: TextBaseline.alphabetic,
   );
+  static TextStyle body3grey = const TextStyle(
+    color: Color(0xff979797),
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w700,
+    fontSize: 18,
+    letterSpacing: 0,
+    decoration: TextDecoration.none,
+    textBaseline: TextBaseline.alphabetic,
+  );
   static const TextStyle body3white = TextStyle(
     color: Colors.white,
     fontFamily: 'Poppins',
@@ -77,6 +94,16 @@ class TextStyles {
 
   static const TextStyle body5 = TextStyle(
     color: Color(0xff979797),
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
+    fontSize: 12,
+    // height: 16 / 12,
+    letterSpacing: 0.5,
+    decoration: TextDecoration.none,
+    textBaseline: TextBaseline.alphabetic,
+  );
+  static const TextStyle body5black = TextStyle(
+    color: Color(0xff000000),
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
     fontSize: 12,

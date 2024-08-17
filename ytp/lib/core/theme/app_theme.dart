@@ -8,7 +8,7 @@ class AppThemeManager {
       brightness: Brightness.light,
       primaryColor: ColorConstants.primaryAccent,
       scaffoldBackgroundColor: ColorConstants.background1,
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         bodyLarge: TextStyles.whiteHeader,
         bodyMedium: TextStyles.whiteBody,
         titleMedium: TextStyles.body2,
@@ -16,6 +16,9 @@ class AppThemeManager {
         bodySmall: TextStyles.body3white,
         labelLarge: TextStyles.body5,
         labelSmall: TextStyles.body4,
+        labelMedium: TextStyles.body,
+        displayLarge: TextStyles.body3grey,
+        displayMedium: TextStyles.body1black,
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: ColorConstants.primaryAccent,
@@ -29,6 +32,7 @@ class AppThemeManager {
       ),
       colorScheme: const ColorScheme.light(
         primary: ColorConstants.primaryAccent,
+        primaryContainer: ColorConstants.background2,
         onPrimary: ColorConstants.background1,
         secondary: ColorConstants.background1,
         onSecondary: ColorConstants.background1,
@@ -46,12 +50,14 @@ class AppThemeManager {
           }
           return const IconThemeData(color: Colors.grey);
         }),
-        labelTextStyle: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return TextStyles.body5;
-          }
-          return TextStyles.body5Grey;
-        }),
+        labelTextStyle: WidgetStateProperty.resolveWith(
+          (states) {
+            if (states.contains(WidgetState.selected)) {
+              return TextStyles.body5black;
+            }
+            return TextStyles.body5Grey;
+          },
+        ),
       ),
     );
   }

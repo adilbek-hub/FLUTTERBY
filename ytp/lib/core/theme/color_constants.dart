@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorConstants {
   // Background
-  static const Color background1 = Color(0xffFDFDFD);
+  static const Color background1 = Color(0xffF6F6F6);
   static const Color background2 = Color(0xff62D489);
   // Accent
   static const Color primaryAccent = Color(0xff242424);

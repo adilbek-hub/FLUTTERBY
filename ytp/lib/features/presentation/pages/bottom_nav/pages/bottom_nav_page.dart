@@ -19,12 +19,9 @@ class BottomNavPage extends StatelessWidget {
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
-        return RefreshIndicator.adaptive(
-          onRefresh: () async {},
-          child: Scaffold(
-            body: child,
-            bottomNavigationBar: NavigationBars(tabsRouter: tabsRouter),
-          ),
+        return Scaffold(
+          body: child,
+          bottomNavigationBar: NavigationBars(tabsRouter: tabsRouter),
         );
       },
     );
@@ -32,63 +29,33 @@ class BottomNavPage extends StatelessWidget {
 }
 
 class NavigationBars extends StatelessWidget {
-  const NavigationBars({
-    super.key,
-    required this.tabsRouter,
-  });
+  const NavigationBars({super.key, required this.tabsRouter});
 
   final TabsRouter tabsRouter;
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBarTheme(
-      data: NavigationBarThemeData(
-        indicatorColor: Colors.transparent,
-        labelTextStyle: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return const TextStyle(
-              fontSize: 12,
-              color: Colors.green,
-            );
-          }
-          return const TextStyle(
-            fontSize: 12,
-            color: Colors.grey,
-          );
-        }),
-        iconTheme: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return const IconThemeData(
-              color: Colors.green,
-            );
-          }
-          return const IconThemeData(
-            color: Colors.grey,
-          );
-        }),
-      ),
-      child: NavigationBar(
-        selectedIndex: tabsRouter.activeIndex,
-        onDestinationSelected: tabsRouter.setActiveIndex,
-        destinations: <Widget>[
-          NavigationDestination(
-            icon: SvgPicture.asset(AssetConstants.luch.svg),
-            label: 'Convert',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(AssetConstants.basket.svg),
-            label: 'Buy',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(AssetConstants.chart.svg),
-            label: 'Statistics',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(AssetConstants.setting.svg),
-            label: 'Settings',
-          ),
-        ],
-      ),
+    return NavigationBar(
+      selectedIndex: tabsRouter.activeIndex,
+      onDestinationSelected: tabsRouter.setActiveIndex,
+      destinations: [
+        NavigationDestination(
+          icon: SvgPicture.asset(AssetConstants.luch.svg),
+          label: 'Convert',
+        ),
+        NavigationDestination(
+          icon: SvgPicture.asset(AssetConstants.basket.svg),
+          label: 'Buy',
+        ),
+        NavigationDestination(
+          icon: SvgPicture.asset(AssetConstants.chart.svg),
+          label: 'Statistics',
+        ),
+        NavigationDestination(
+          icon: SvgPicture.asset(AssetConstants.setting.svg),
+          label: 'Settings',
+        ),
+      ],
     );
   }
 }

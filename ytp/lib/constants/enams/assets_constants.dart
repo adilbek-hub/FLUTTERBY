@@ -7,6 +7,7 @@ enum AssetConstants {
   loading,
   bgi,
   women,
+  image,
 }
 
 extension AssetsExtension on AssetConstants {

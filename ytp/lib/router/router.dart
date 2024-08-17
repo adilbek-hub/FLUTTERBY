@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:ytp/features/presentation/pages/bay_page/bay_page.dart';
 import 'package:ytp/features/presentation/pages/bottom_nav/pages/bottom_nav_page.dart';
 import 'package:ytp/features/presentation/pages/convert_page/convert_page.dart';
-import 'package:ytp/features/presentation/pages/onboarding/on_board_page.dart';
+import 'package:ytp/features/presentation/pages/onboarding/page/on_board_page.dart';
 import 'package:ytp/features/presentation/pages/preloaded/pages/on_boarding_page.dart';
 import 'package:ytp/features/presentation/pages/settings/settings_page.dart';
 import 'package:ytp/features/presentation/pages/statictist/statistics_page.dart';
