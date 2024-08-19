@@ -82,7 +82,7 @@ final ProductModel mersedesE55 = ProductModel(
   id: 2,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
-  price: 1611160,
+  price: 50000000,
   description: 'Продаю автомобиль',
   name: 'Mercedes-Benz',
   model: 'E-55',
