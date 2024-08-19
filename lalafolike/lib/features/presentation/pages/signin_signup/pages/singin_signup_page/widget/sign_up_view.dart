@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
+import 'package:lalafolike/features/data/user_registration/google_sign_in.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
@@ -10,7 +11,9 @@ import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singi
 class SignUpView extends StatelessWidget {
   const SignUpView({
     super.key,
+    this.onTap,
   });
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,9 @@ class SignUpView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SignInPlatform(image: AssetConstants.facebook.png),
-              SignInPlatform(image: AssetConstants.google.webp),
+              InkWell(
+                  onTap: onTap,
+                  child: SignInPlatform(image: AssetConstants.google.webp)),
               SignInPlatform(image: AssetConstants.vk.png),
               SignInPlatform(image: AssetConstants.ok.png),
             ],
@@ -52,7 +57,9 @@ class SignUpView extends StatelessWidget {
             textType: TextType.body,
             textColor: Colors.white,
             backgroundColor: ColorConstants.green,
-            onPressed: () {},
+            onPressed: () async {
+              await signInWithGoogle();
+            },
           ),
           const Spacer(),
           const SizedBox(height: 40),
