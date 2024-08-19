@@ -8,7 +8,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
-import 'package:lalafolike/features/presentation/pages/home/widget/search_button.dart';
+import 'package:lalafolike/features/presentation/basic_widgets/search_button.dart';
 import 'package:lottie/lottie.dart' hide Marker;
 import 'package:shimmer/shimmer.dart';
 

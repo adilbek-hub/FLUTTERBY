@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/core/theme/get_theme_mode_color.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/pages/home/model/category.dart';
+import 'package:lalafolike/router/router.dart';
 
 class Categories extends StatefulWidget {
   const Categories({
@@ -30,16 +32,14 @@ class _CategoriesState extends State<Categories> {
               children: firstRowItems
                   .map(
                     (f) => GestureDetector(
+                      onTap: () =>
+                          context.router.push(CategoryDetailRoute(category: f)),
                       child: Container(
                         margin: const EdgeInsets.all(4.0),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 7.0),
                         decoration: BoxDecoration(
-                          color: getThemeModeColor.brightnessColor(
-                            context,
-                            lightColor: ColorConstants.lightConatinerColor,
-                            darkColor: ColorConstants.darkContainerColor,
-                          ),
+                          color: Theme.of(context).colorScheme.surface,
                           borderRadius: const BorderRadius.all(
                             Radius.circular(10.0),
                           ),
@@ -85,6 +85,9 @@ class _CategoriesState extends State<Categories> {
               children: secondRowItems
                   .map(
                     (f) => GestureDetector(
+                      onTap: () => context.router.push(
+                        (CategoryDetailRoute(category: f)),
+                      ),
                       child: Container(
                         margin: const EdgeInsets.all(2.0),
                         padding: const EdgeInsets.symmetric(

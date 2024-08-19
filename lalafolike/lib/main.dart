@@ -51,7 +51,9 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             theme: AppThemeManager.lightTheme,
             darkTheme: AppThemeManager.darkTheme,
-            themeMode: themeNotifier.themeMode,
+            themeMode: themeNotifier.themeMode == ThemeMode.system
+                ? null
+                : themeNotifier.themeMode,
             routerConfig: appRouter.config(),
           );
         },

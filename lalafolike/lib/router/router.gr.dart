@@ -50,6 +50,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AnnounsementviewPage(),
       );
     },
+    CategoryDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoryDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CategoryDetailPage(
+          key: args.key,
+          category: args.category,
+        ),
+      );
+    },
     CategoryRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -62,6 +72,7 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ChatWithUserPage(
           key: args.key,
+          product: args.product,
         ),
       );
     },
@@ -266,6 +277,44 @@ class AnnounsementviewRoute extends PageRouteInfo<void> {
   static const String name = 'AnnounsementviewRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CategoryDetailPage]
+class CategoryDetailRoute extends PageRouteInfo<CategoryDetailRouteArgs> {
+  CategoryDetailRoute({
+    Key? key,
+    required Category category,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CategoryDetailRoute.name,
+          args: CategoryDetailRouteArgs(
+            key: key,
+            category: category,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoryDetailRoute';
+
+  static const PageInfo<CategoryDetailRouteArgs> page =
+      PageInfo<CategoryDetailRouteArgs>(name);
+}
+
+class CategoryDetailRouteArgs {
+  const CategoryDetailRouteArgs({
+    this.key,
+    required this.category,
+  });
+
+  final Key? key;
+
+  final Category category;
+
+  @override
+  String toString() {
+    return 'CategoryDetailRouteArgs{key: $key, category: $category}';
+  }
 }
 
 /// generated route for

@@ -13,7 +13,9 @@ import 'package:lalafolike/features/presentation/pages/chat/pages/chats_page.dar
 import 'package:lalafolike/features/presentation/pages/chat/pages/notification_page.dart';
 import 'package:lalafolike/features/presentation/pages/favorite/pages/favorites_page.dart';
 import 'package:lalafolike/features/presentation/pages/home/from_home_router.dart';
+import 'package:lalafolike/features/presentation/pages/home/model/category.dart';
 import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
+import 'package:lalafolike/features/presentation/pages/home/pages/category/category_detail_page.dart';
 import 'package:lalafolike/features/presentation/pages/home/pages/category/category_page.dart';
 import 'package:lalafolike/features/presentation/pages/home/pages/filter_page.dart';
 import 'package:lalafolike/features/presentation/pages/home/pages/home_page.dart';
@@ -49,6 +51,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: OnBoardingRoute.page, initial: true, children: [
           AutoRoute(page: FromHomeRouterRoute.page, initial: false, children: [
             AutoRoute(page: HomeRoute.page, initial: false),
+            AutoRoute(page: CategoryDetailRoute.page, initial: false),
             AutoRoute(page: CategoryRoute.page),
           ]),
           AutoRoute(page: FavoriteRoute.page, initial: false),

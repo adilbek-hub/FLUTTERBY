@@ -17,7 +17,8 @@ class AppThemeManager {
         primary: ColorConstants.primary,
         onPrimary: ColorConstants.white,
         secondaryContainer: ColorConstants.primary.withOpacity(0.6),
-        brightness: Brightness.light),
+        brightness: Brightness.light,
+        surface: ColorConstants.lightConatinerColor),
     expansionTileTheme: const ExpansionTileThemeData(
         textColor: ColorConstants.black,
         shape: RoundedRectangleBorder(side: BorderSide.none)),
@@ -48,6 +49,8 @@ class AppThemeManager {
       backgroundColor: ColorConstants.darkbgcolor,
       systemOverlayStyle: SystemUiOverlayStyle.light,
     ),
+    textTheme: const TextTheme(
+        titleSmall: TextStyle(fontSize: 90), bodyLarge: TextStyle()),
     cardColor: const Color.fromARGB(255, 18, 18, 18),
     cardTheme: const CardTheme(
         surfaceTintColor: Color.fromARGB(255, 18, 18, 18),
@@ -56,7 +59,8 @@ class AppThemeManager {
         primary: ColorConstants.primary,
         onPrimary: ColorConstants.black,
         secondaryContainer: ColorConstants.primary.withOpacity(0.6),
-        brightness: Brightness.dark),
+        brightness: Brightness.dark,
+        surface: ColorConstants.darkContainerColor),
     expansionTileTheme: const ExpansionTileThemeData(
         textColor: ColorConstants.white,
         shape: RoundedRectangleBorder(side: BorderSide.none)),

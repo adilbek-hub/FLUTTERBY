@@ -1,92 +1,169 @@
-// @RoutePage()
-// class ChatWithUserPage extends StatelessWidget {
-//   const ChatWithUserPage({super.key, required this.product});
-//   final ProductModel product;
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:lalafolike/core/theme/color_constants.dart';
+import 'package:lalafolike/features/presentation/apptext/app_text.dart';
+import 'package:lalafolike/features/presentation/basic_widgets/custom_image_container.dart';
+import 'package:lalafolike/features/presentation/basic_widgets/custom_text_container.dart';
+import 'package:lalafolike/features/presentation/basic_widgets/custom_text_field.dart';
+import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
+import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         leading: IconButton(
-//           onPressed: () => Navigator.pop(context),
-//           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.grey),
-//         ),
-//         title: Row(
-//           children: [
-//             CircleAvatar(
-//               radius: 20,
-//               backgroundImage: AssetImage(AssetConstants.spider2.png),
-//             ),
-//             const SizedBox(width: 15),
-//             const Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 AppText(
-//                   title: 'Spider Man',
-//                   textType: TextType.body,
-//                   color: Colors.black,
-//                   fontWeight: FontWeight.w600,
-//                 ),
-//                 AppText(
-//                   title: 'Был(а) в сети 14.08.2024',
-//                   textType: TextType.promocode,
-//                   color: Colors.black,
-//                 ),
-//               ],
-//             )
-//           ],
-//         ),
-//         actions: [
-//           IconButton(
-//             onPressed: () {},
-//             icon: const Icon(Icons.more_vert, color: Colors.grey),
-//           ),
-//         ],
-//       ),
-//       body: Column(
-//         children: [
-//           const Divider(
-//             color: ColorConstants.grey,
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.symmetric(horizontal: 16),
-//             child: Row(
-//               children: [
-//                 CustomImageContainer(
-//                   width: 40,
-//                   height: 40,
-//                   borderRadius: 15,
-//                   imageUrl: product.imageUrl ?? '',
-//                 ),
-//                 const SizedBox(width: 10),
-//                 Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     AppText(
-//                       title: product.description ?? '',
-//                       textType: TextType.promocode,
-//                       color: ColorConstants.grey,
-//                     ),
-//                     AppText(
-//                       title: '${product.price} сом',
-//                       textType: TextType.body,
-//                       color: ColorConstants.black,
-//                       fontWeight: FontWeight.w700,
-//                     ),
-//                   ],
-//                 ),
-//                 const Spacer(),
-//                 const Icon(Icons.chevron_right, color: Colors.grey),
-//               ],
-//             ),
-//           ),
-//           const Divider(color: ColorConstants.grey),
-//           const Expanded(child: ListView.builder),
-//         ],
-//       ),
-//     );
-//   }
-// }
+@RoutePage()
+class ChatWithUserPage extends StatelessWidget {
+  const ChatWithUserPage({super.key, required this.product});
+  final ProductModel product;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.grey),
+        ),
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 20,
+              backgroundImage: AssetImage(AssetConstants.spider2.png),
+            ),
+            const SizedBox(width: 15),
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppText(
+                  title: 'Spider Man',
+                  textType: TextType.body,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
+                AppText(
+                  title: 'Был(а) в сети 14.08.2024',
+                  textType: TextType.promocode,
+                  color: Colors.black,
+                ),
+              ],
+            )
+          ],
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert, color: Colors.grey),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          const Divider(
+            color: ColorConstants.grey,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                CustomImageContainer(
+                  width: 40,
+                  height: 40,
+                  borderRadius: 15,
+                  imageUrl: product.imageUrl ?? '',
+                ),
+                const SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppText(
+                      title: product.description ?? '',
+                      textType: TextType.promocode,
+                      color: ColorConstants.grey,
+                    ),
+                    AppText(
+                      title: '${product.price} сом',
+                      textType: TextType.body,
+                      color: ColorConstants.black,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                const Icon(Icons.chevron_right, color: Colors.grey),
+              ],
+            ),
+          ),
+          const Divider(color: ColorConstants.grey),
+          Expanded(
+            child: ListView.builder(
+                itemCount: 50,
+                itemBuilder: (context, index) {
+                  return const Text('Hello');
+                }),
+          ),
+        ],
+      ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 110,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  offset: const Offset(0, 1),
+                  color: Colors.black.withOpacity(0.1),
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 30,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return const CustomTextContainer(
+                          text: 'Hello, Flutter!',
+                          borderRadius: 15.0,
+                        );
+                      },
+                    ),
+                  ),
+                  const Divider(color: Colors.grey),
+                  Row(
+                    children: [
+                      const Icon(Icons.photo_camera, color: Colors.green),
+                      Expanded(
+                        child: CustomTextField(
+                          controller: TextEditingController(),
+                          hintText: 'Type your message...',
+                          borderRadius: 15.0,
+                          borderColor: Colors.blue,
+                          borderWidth: 2.0,
+                          backgroundColor: Colors.lightBlue[50]!,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 15.0),
+                          textStyle: const TextStyle(color: Colors.blue),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/*
 import 'dart:convert';
 import 'dart:io';
 
@@ -313,3 +390,5 @@ class _ChatWithUserPageState extends State<ChatWithUserPage> {
         ),
       );
 }
+
+*/

@@ -65,6 +65,9 @@ enum AssetConstants {
   correct,
   okey,
   map,
+  leonardo,
+  mersE55,
+  wwpassat,
 }
 
 extension AssetsExtension on AssetConstants {

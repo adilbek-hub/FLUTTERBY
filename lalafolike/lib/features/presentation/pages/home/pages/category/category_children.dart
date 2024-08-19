@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
+import 'package:lalafolike/features/presentation/basic_widgets/search_button.dart';
 import 'package:lalafolike/features/presentation/pages/home/model/category.dart';
-import 'package:lalafolike/features/presentation/pages/home/widget/search_button.dart';
 
 class CategoryChildrenPage extends StatelessWidget {
   const CategoryChildrenPage({
