@@ -8,6 +8,7 @@ class SignInSignUpTextField extends StatelessWidget {
     this.suffixIcon,
     this.textColor = Colors.black,
     this.iconColor = Colors.grey,
+    this.controller,
   });
 
   final Icon prefixIcon;
@@ -15,10 +16,12 @@ class SignInSignUpTextField extends StatelessWidget {
   final Icon? suffixIcon;
   final Color textColor;
   final Color iconColor;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),

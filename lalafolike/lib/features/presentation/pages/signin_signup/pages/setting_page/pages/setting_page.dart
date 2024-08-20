@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/core/theme/get_theme_mode_color.dart';
+import 'package:lalafolike/features/data/auth_service.dart/create_user_with_email_password.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
 import 'package:lalafolike/features/presentation/pages/signin_signup/pages/setting_page/widget/setting_card.dart';
@@ -146,12 +147,18 @@ class SettingPage extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              const CircleAvatar(
+                              CircleAvatar(
                                 radius: 15,
                                 backgroundColor: ColorConstants.grey,
-                                child: Icon(
-                                  Icons.logout,
-                                  color: ColorConstants.darkTextColor,
+                                child: IconButton(
+                                  onPressed: () {
+                                    AuthService(context: context)
+                                        .signOut(context: context);
+                                  },
+                                  icon: const Icon(
+                                    Icons.logout,
+                                    color: ColorConstants.darkTextColor,
+                                  ),
                                 ),
                               ),
                               const SizedBox(

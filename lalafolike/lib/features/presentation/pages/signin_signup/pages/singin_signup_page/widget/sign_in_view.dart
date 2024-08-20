@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
+import 'package:lalafolike/features/data/auth_service.dart/create_user_with_email_password.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
 import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/widget/sign_in_platform.dart';
 import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/widget/signin_signup_text_field.dart';
 
-class SignInView extends StatelessWidget {
+class SignInView extends StatefulWidget {
   const SignInView({
     super.key,
   });
 
+  @override
+  State<SignInView> createState() => _SignInViewState();
+}
+
+class _SignInViewState extends State<SignInView> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,19 +36,21 @@ class SignInView extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 70),
-          const SignInSignUpTextField(
-            prefixIcon: Icon(Icons.person, color: ColorConstants.grey),
+          SignInSignUpTextField(
+            controller: emailController,
+            prefixIcon: const Icon(Icons.person, color: ColorConstants.grey),
             hintText: 'Email или номер телефона',
             iconColor: ColorConstants.grey,
             textColor: ColorConstants.grey,
           ),
           const SizedBox(height: 35),
-          const SignInSignUpTextField(
-            prefixIcon: Icon(Icons.lock),
+          SignInSignUpTextField(
+            controller: passwordController,
+            prefixIcon: const Icon(Icons.lock),
             hintText: 'Пароль',
             iconColor: ColorConstants.grey,
             textColor: ColorConstants.grey,
-            suffixIcon: Icon(Icons.remove_red_eye),
+            suffixIcon: const Icon(Icons.remove_red_eye),
           ),
           const SizedBox(height: 35),
           DefElevatedButton(
@@ -49,7 +59,10 @@ class SignInView extends StatelessWidget {
             textType: TextType.body,
             textColor: Colors.white,
             backgroundColor: ColorConstants.green,
-            onPressed: () {},
+            onPressed: () {
+              AuthService(context: context).signInWithEmailAndPassword(
+                  emailController.text, passwordController.text);
+            },
           ),
           const Spacer(),
           const AppText(title: 'Забыли пароль?', textType: TextType.body),
