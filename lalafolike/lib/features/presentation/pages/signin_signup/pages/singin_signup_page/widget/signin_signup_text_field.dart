@@ -9,6 +9,7 @@ class SignInSignUpTextField extends StatelessWidget {
     this.textColor = Colors.black,
     this.iconColor = Colors.grey,
     this.controller,
+    this.obscureText = false,
   });
 
   final Icon prefixIcon;
@@ -16,11 +17,13 @@ class SignInSignUpTextField extends StatelessWidget {
   final Icon? suffixIcon;
   final Color textColor;
   final Color iconColor;
+  final bool obscureText;
   final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText: obscureText,
       controller: controller,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(

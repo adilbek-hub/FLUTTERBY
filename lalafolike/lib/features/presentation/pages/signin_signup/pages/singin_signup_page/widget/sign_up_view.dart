@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
-import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/service/auth_service.dart/create_user_with_email_password.dart';
+import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/service/auth_service.dart/authuser_with_phone_number.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
@@ -41,13 +41,14 @@ class _SignUpViewState extends State<SignUpView> {
           const SizedBox(height: 70),
           SignInSignUpTextField(
             controller: emailController,
-            prefixIcon: const Icon(Icons.phone, color: ColorConstants.grey),
-            hintText: 'Номер телефона',
+            prefixIcon: const Icon(Icons.person, color: ColorConstants.grey),
+            hintText: 'Ваша электронная почта',
             iconColor: ColorConstants.grey,
             textColor: ColorConstants.grey,
           ),
           const SizedBox(height: 35),
           SignInSignUpTextField(
+            obscureText: true,
             controller: passwordController,
             prefixIcon: const Icon(Icons.lock),
             hintText: 'Пароль',

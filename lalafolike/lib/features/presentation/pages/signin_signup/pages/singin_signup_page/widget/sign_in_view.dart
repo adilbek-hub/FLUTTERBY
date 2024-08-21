@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
-import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/service/auth_service.dart/create_user_with_email_password.dart';
+import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/service/auth_service.dart/authuser_with_phone_number.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
@@ -39,18 +39,20 @@ class _SignInViewState extends State<SignInView> {
           SignInSignUpTextField(
             controller: emailController,
             prefixIcon: const Icon(Icons.person, color: ColorConstants.grey),
-            hintText: 'Email или номер телефона',
+            hintText: 'Логин электронной почты',
             iconColor: ColorConstants.grey,
             textColor: ColorConstants.grey,
           ),
           const SizedBox(height: 35),
           SignInSignUpTextField(
+            obscureText: true,
             controller: passwordController,
             prefixIcon: const Icon(Icons.lock),
             hintText: 'Пароль',
             iconColor: ColorConstants.grey,
             textColor: ColorConstants.grey,
             suffixIcon: const Icon(Icons.remove_red_eye),
+            
           ),
           const SizedBox(height: 35),
           DefElevatedButton(
@@ -63,7 +65,6 @@ class _SignInViewState extends State<SignInView> {
               AuthService(context: context).signInWithEmailAndPassword(
                   emailController.text, passwordController.text);
             },
-          
           ),
           const Spacer(),
           const AppText(title: 'Забыли пароль?', textType: TextType.body),

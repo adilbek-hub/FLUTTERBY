@@ -74,10 +74,10 @@ class _SignInSignUpPageState extends State<SignInSignUpPage> {
               lightColor: ColorConstants.white,
               darkColor: ColorConstants.darkbgcolor,
             ),
-            child: TabBarView(
+            child: const TabBarView(
               children: [
-                const SignInView(),
-                SignUpView(onTap: () {}),
+                SignInView(),
+                SignUpView(),
               ],
             ),
           ),

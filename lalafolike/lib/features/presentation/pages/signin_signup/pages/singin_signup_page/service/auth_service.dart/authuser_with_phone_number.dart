@@ -44,21 +44,11 @@ class AuthService {
       _showAnimatedMessage('Пользователь успешно вошел!', Colors.green);
       print('Пользователь успешно вошел!');
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        // Show error message with animation
-        _showAnimatedMessage(
-            'Для этого письма не найден ни один пользователь.', Colors.red);
-        print('Для этого письма не найден ни один пользователь.');
-      } else if (e.code == 'wrong-password') {
-        // Show error message with animation
-        _showAnimatedMessage(
-            'Для этого пользователя указан неправильный пароль.', Colors.red);
-        print('Для этого пользователя указан неправильный пароль.');
-      }
-    } catch (e) {
       // Show general error message with animation
-      _showAnimatedMessage('Произошла ошибка: $e', Colors.red);
-      print('Произошла ошибка: $e');
+      _showAnimatedMessage(
+          'Ваш логин или пароль не соответствует к учетную запись', Colors.red);
+      print(
+          'Ваш логин или пароль не соответствует к учетную запись: ${e.toString()}');
     }
   }
 

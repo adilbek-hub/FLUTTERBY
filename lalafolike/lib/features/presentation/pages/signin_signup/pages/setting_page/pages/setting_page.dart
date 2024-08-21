@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/core/theme/get_theme_mode_color.dart';
-import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/service/auth_service.dart/create_user_with_email_password.dart';
+import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/service/auth_service.dart/authuser_with_phone_number.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
 import 'package:lalafolike/features/presentation/pages/signin_signup/pages/setting_page/widget/setting_card.dart';
