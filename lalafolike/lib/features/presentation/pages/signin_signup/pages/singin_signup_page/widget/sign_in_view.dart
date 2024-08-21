@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
-import 'package:lalafolike/features/data/auth_service.dart/create_user_with_email_password.dart';
+import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/service/auth_service.dart/create_user_with_email_password.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
@@ -63,6 +63,7 @@ class _SignInViewState extends State<SignInView> {
               AuthService(context: context).signInWithEmailAndPassword(
                   emailController.text, passwordController.text);
             },
+          
           ),
           const Spacer(),
           const AppText(title: 'Забыли пароль?', textType: TextType.body),

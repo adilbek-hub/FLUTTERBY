@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
-import 'package:lalafolike/features/data/auth_service.dart/create_user_with_email_password.dart';
+import 'package:lalafolike/features/presentation/pages/signin_signup/pages/singin_signup_page/service/auth_service.dart/create_user_with_email_password.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
@@ -33,9 +33,7 @@ class _SignUpViewState extends State<SignUpView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SignInPlatform(image: AssetConstants.facebook.png),
-              InkWell(
-                  onTap: widget.onTap,
-                  child: SignInPlatform(image: AssetConstants.google.webp)),
+              SignInPlatform(image: AssetConstants.google.webp),
               SignInPlatform(image: AssetConstants.vk.png),
               SignInPlatform(image: AssetConstants.ok.png),
             ],
