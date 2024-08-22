@@ -71,8 +71,7 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: ChatWithUserPage(
-          key: args.key,
-          product: args.product,
+          key: args.key, product: args.product,
         ),
       );
     },

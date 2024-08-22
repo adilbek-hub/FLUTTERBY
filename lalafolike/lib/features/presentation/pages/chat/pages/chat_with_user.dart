@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
@@ -7,6 +9,146 @@ import 'package:lalafolike/features/presentation/basic_widgets/custom_text_conta
 import 'package:lalafolike/features/presentation/basic_widgets/custom_text_field.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
 import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
+
+/*
+@RoutePage()
+class ChatWithUserPage extends StatefulWidget {
+  const ChatWithUserPage({Key? key}) : super(key: key);
+
+  @override
+  _ChatWithUserPageState createState() => _ChatWithUserPageState();
+}
+
+class _ChatWithUserPageState extends State<ChatWithUserPage> {
+  final CollectionReference _messages =
+      FirebaseFirestore.instance.collection('messages');
+  final TextEditingController _textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Chat App'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: StreamBuilder<QuerySnapshot>(
+              stream: _messages.snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                }
+
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+
+                final messages = snapshot.data!.docs;
+                return ListView.builder(
+                  reverse: true,
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    final message = messages[index];
+                    return ListTile(
+                      title: Text(message['text']),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _textEditingController,
+                    decoration: InputDecoration(
+                      hintText: 'Type a message',
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: () => _sendMessage(),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _sendMessage() async {
+    final text = _textEditingController.text.trim();
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      if (text.isNotEmpty) {
+        try {
+          await FirebaseFirestore.instance.collection('messages').add({
+            'text': text,
+            'timestamp': Timestamp.now(),
+            'userId': user.uid, // Колдонуучунун IDсин кошуу
+          });
+          _textEditingController.clear();
+        } catch (e) {
+          print('Error sending message: $e');
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Error'),
+                content: Text('Failed to send message. Please try again.'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text('OK'),
+                  ),
+                ],
+              );
+            },
+          );
+        }
+      }
+    } else {
+      print('User is not authenticated.');
+    }
+  }
+}
+*/
+class ChatService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  Stream<QuerySnapshot> getMessages() {
+    return FirebaseFirestore.instance
+        .collection('messages')
+        .orderBy('createdAt', descending: true)
+        .snapshots();
+  }
+
+  Future<void> sendMessage(String text) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      try {
+        await _firestore.collection('messages').add({
+          'text': text,
+          'createdAt': FieldValue.serverTimestamp(),
+          'userId': user.uid,
+          'userName': user.displayName ?? 'Anonymous',
+          'userAvatar': user.photoURL ?? '',
+        });
+      } catch (e) {
+        print('Билдирүүнү жөнөтүүдө ката кетти: $e');
+      }
+    } else {
+      print('Колдонуучу катталган эмес');
+    }
+  }
+}
 
 @RoutePage()
 class ChatWithUserPage extends StatelessWidget {
@@ -100,295 +242,78 @@ class ChatWithUserPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            height: 110,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, 1),
-                  color: Colors.black.withOpacity(0.1),
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    height: 30,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return const CustomTextContainer(
-                          text: 'Hello, Flutter!',
-                          borderRadius: 15.0,
-                        );
-                      },
-                    ),
+      bottomNavigationBar: SingleChildScrollView(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 130,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: const Offset(0, 1),
+                    color: Colors.black.withOpacity(0.1),
                   ),
-                  const Divider(color: Colors.grey),
-                  Row(
-                    children: [
-                      const Icon(Icons.photo_camera, color: Colors.green),
-                      Expanded(
-                        child: CustomTextField(
-                          controller: TextEditingController(),
-                          hintText: 'Type your message...',
-                          borderRadius: 15.0,
-                          borderColor: Colors.blue,
-                          borderWidth: 2.0,
-                          backgroundColor: Colors.lightBlue[50]!,
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 15.0),
-                          textStyle: const TextStyle(color: Colors.blue),
-                        ),
-                      ),
-                    ],
-                  )
                 ],
               ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 15),
+                    SizedBox(
+                      height: 30,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return const CustomTextContainer(
+                            text: 'Hello, Flutter!',
+                            borderRadius: 15.0,
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    const Divider(color: Colors.grey),
+                    Row(
+                      children: [
+                        const Icon(Icons.photo_camera,
+                            color: Colors.green, size: 40),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: CustomTextField(
+                            controller: TextEditingController(),
+                            hintText: 'Сообщение...',
+                            borderColor: Theme.of(context).colorScheme.surface,
+                            borderRadius: 15.0,
+                            borderWidth: 2.0,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.surface,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 15.0),
+                            textStyle: const TextStyle(color: Colors.blue),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        const CircleAvatar(
+                            backgroundColor: Colors.green,
+                            child:
+                                Icon(Icons.arrow_upward, color: Colors.white)),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/*
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:auto_route/auto_route.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
-import 'package:mime/mime.dart';
-import 'package:open_filex/open_filex.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:uuid/uuid.dart';
-
-@RoutePage()
-class ChatWithUserPage extends StatefulWidget {
-  const ChatWithUserPage({super.key});
-
-  @override
-  State<ChatWithUserPage> createState() => _ChatWithUserPageState();
-}
-
-class _ChatWithUserPageState extends State<ChatWithUserPage> {
-  List<types.Message> _messages = [];
-  final _user = const types.User(
-    id: '82091008-a484-4a89-ae75-a22bf8d6f3ac',
-  );
-
-  @override
-  void initState() {
-    super.initState();
-    _loadMessages();
-  }
-
-  void _addMessage(types.Message message) {
-    setState(() {
-      _messages.insert(0, message);
-    });
-  }
-
-  void _handleAttachmentPressed() {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) => SafeArea(
-        child: SizedBox(
-          height: 144,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  _handleImageSelection();
-                },
-                child: const Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('Photo'),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  _handleFileSelection();
-                },
-                child: const Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('File'),
-                ),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('Cancel'),
-                ),
-              ),
-            ],
-          ),
+          ],
         ),
       ),
     );
   }
-
-  void _handleFileSelection() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.any,
-    );
-
-    if (result != null && result.files.single.path != null) {
-      final message = types.FileMessage(
-        author: _user,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: const Uuid().v4(),
-        mimeType: lookupMimeType(result.files.single.path!),
-        name: result.files.single.name,
-        size: result.files.single.size,
-        uri: result.files.single.path!,
-      );
-
-      _addMessage(message);
-    }
-  }
-
-  void _handleImageSelection() async {
-    final result = await ImagePicker().pickImage(
-      imageQuality: 70,
-      maxWidth: 1440,
-      source: ImageSource.gallery,
-    );
-
-    if (result != null) {
-      final bytes = await result.readAsBytes();
-      final image = await decodeImageFromList(bytes);
-
-      final message = types.ImageMessage(
-        author: _user,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        height: image.height.toDouble(),
-        id: const Uuid().v4(),
-        name: result.name,
-        size: bytes.length,
-        uri: result.path,
-        width: image.width.toDouble(),
-      );
-
-      _addMessage(message);
-    }
-  }
-
-  void _handleMessageTap(BuildContext _, types.Message message) async {
-    if (message is types.FileMessage) {
-      var localPath = message.uri;
-
-      if (message.uri.startsWith('http')) {
-        try {
-          final index =
-              _messages.indexWhere((element) => element.id == message.id);
-          final updatedMessage =
-              (_messages[index] as types.FileMessage).copyWith(
-            isLoading: true,
-          );
-
-          setState(() {
-            _messages[index] = updatedMessage;
-          });
-
-          final client = http.Client();
-          final request = await client.get(Uri.parse(message.uri));
-          final bytes = request.bodyBytes;
-          final documentsDir = (await getApplicationDocumentsDirectory()).path;
-          localPath = '$documentsDir/${message.name}';
-
-          if (!File(localPath).existsSync()) {
-            final file = File(localPath);
-            await file.writeAsBytes(bytes);
-          }
-        } finally {
-          final index =
-              _messages.indexWhere((element) => element.id == message.id);
-          final updatedMessage =
-              (_messages[index] as types.FileMessage).copyWith(
-            isLoading: null,
-          );
-
-          setState(() {
-            _messages[index] = updatedMessage;
-          });
-        }
-      }
-
-      await OpenFilex.open(localPath);
-    }
-  }
-
-  void _handlePreviewDataFetched(
-    types.TextMessage message,
-    types.PreviewData previewData,
-  ) {
-    final index = _messages.indexWhere((element) => element.id == message.id);
-    final updatedMessage = (_messages[index] as types.TextMessage).copyWith(
-      previewData: previewData,
-    );
-
-    setState(() {
-      _messages[index] = updatedMessage;
-    });
-  }
-
-  void _handleSendPressed(types.PartialText message) {
-    final textMessage = types.TextMessage(
-      author: _user,
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: const Uuid().v4(),
-      text: message.text,
-    );
-
-    _addMessage(textMessage);
-  }
-
-  void _loadMessages() async {
-    final response = await rootBundle.loadString('assets/messages.json');
-    final messages = (jsonDecode(response) as List)
-        .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
-        .toList();
-
-    setState(() {
-      _messages = messages;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        body: Chat(
-          messages: _messages,
-          onAttachmentPressed: _handleAttachmentPressed,
-          onMessageTap: _handleMessageTap,
-          onPreviewDataFetched: _handlePreviewDataFetched,
-          onSendPressed: _handleSendPressed,
-          showUserAvatars: true,
-          showUserNames: true,
-          user: _user,
-        ),
-      );
 }
-
-*/

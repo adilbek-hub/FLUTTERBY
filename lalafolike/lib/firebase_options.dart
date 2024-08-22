@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCs30rQPfkiLF4E-r68RNzJrOgeU5eiBq0',
-    appId: '1:414344671612:android:18c41134d478a4b5a3b4f9',
-    messagingSenderId: '414344671612',
-    projectId: 'lala-75113',
-    storageBucket: 'lala-75113.appspot.com',
+    apiKey: 'AIzaSyDjCpIeuwzQKTpGnCRiqmaMmcIOui2pmw4',
+    appId: '1:689326513263:android:4b78c6d1b2424d1b00019a',
+    messagingSenderId: '689326513263',
+    projectId: 'lala-9f3aa',
+    storageBucket: 'lala-9f3aa.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCWTXlmuIY4_7gH9tFSuykh79TGOJcAqKE',
-    appId: '1:414344671612:ios:82e9f6437b89517da3b4f9',
-    messagingSenderId: '414344671612',
-    projectId: 'lala-75113',
-    storageBucket: 'lala-75113.appspot.com',
+    apiKey: 'AIzaSyBcvw45fL_35yL_tTbyj5LsKxi4aZIqEjY',
+    appId: '1:689326513263:ios:cb21629f77c4f0c000019a',
+    messagingSenderId: '689326513263',
+    projectId: 'lala-9f3aa',
+    storageBucket: 'lala-9f3aa.appspot.com',
     iosBundleId: 'com.tatadev.lalafolike',
   );
 

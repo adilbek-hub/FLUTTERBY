@@ -28,24 +28,35 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: padding,
-      height: height,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: Border.all(
-          color: borderColor,
-          width: borderWidth,
+    return TextField(
+      controller: controller,
+      maxLines: maxLines,
+      style: textStyle ?? const TextStyle(color: Colors.black),
+      decoration: InputDecoration(
+        contentPadding: padding,
+        hintText: hintText,
+        filled: true,
+        fillColor: backgroundColor,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(
+            color: borderColor,
+            width: borderWidth,
+          ),
         ),
-      ),
-      child: TextField(
-        controller: controller,
-        maxLines: maxLines,
-        style: textStyle ?? const TextStyle(color: Colors.black),
-        decoration: InputDecoration(
-          hintText: hintText,
-          border: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(
+            color: borderColor,
+            width: borderWidth,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(
+            color: borderColor,
+            width: borderWidth,
+          ),
         ),
       ),
     );
