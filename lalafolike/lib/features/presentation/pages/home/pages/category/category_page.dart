@@ -114,5 +114,5 @@ Color getRandomColor() {
     random.nextInt(256),
     random.nextInt(256),
     random.nextInt(256),
-  );
+  ).withOpacity(0.2);
 }

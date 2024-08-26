@@ -173,15 +173,16 @@ class _ChatWithUserPageState extends State<ChatWithUserPage> {
                         alignment:
                             isMe ? Alignment.centerRight : Alignment.centerLeft,
                         child: SizedBox(
-                          width: isMe
-                              ? 200.0
-                              : 240.0, // Set width based on isMe condition
+                          width: isMe ? 200.0 : 240.0,
                           child: Container(
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                              color: isMe ? Colors.blue : Colors.grey[200],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                                color: isMe
+                                    ? ColorConstants.green.withOpacity(0.3)
+                                    : const Color.fromARGB(255, 197, 215, 221),
+                                borderRadius: isMe
+                                    ? BorderRadius.circular(18)
+                                    : BorderRadius.circular(12)),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,7 +190,8 @@ class _ChatWithUserPageState extends State<ChatWithUserPage> {
                                 Text(
                                   message['text'] ?? '',
                                   style: TextStyle(
-                                    color: isMe ? Colors.white : Colors.black,
+                                    color: isMe ? Colors.black : Colors.black,
+                                    fontSize: 18,
                                   ),
                                 ),
                                 const SizedBox(height: 5),
@@ -198,9 +200,8 @@ class _ChatWithUserPageState extends State<ChatWithUserPage> {
                                   child: Text(
                                     formattedDate,
                                     style: TextStyle(
-                                      color:
-                                          isMe ? Colors.white : Colors.black54,
-                                      fontSize: 12,
+                                      color: isMe ? Color.fromARGB(255, 109, 125, 129) : Color.fromARGB(255, 109, 125, 129),
+                                      fontSize: 13,
                                     ),
                                   ),
                                 ),
@@ -213,6 +214,22 @@ class _ChatWithUserPageState extends State<ChatWithUserPage> {
                   },
                 );
               },
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.schedule, color: ColorConstants.grey, size: 20),
+                SizedBox(width: 10),
+                AppText(
+                  textAlign: TextAlign.center,
+                  title: 'отвечает на 50% сообщений \n Обычно в течение дня',
+                  textType: TextType.subtitle,
+                  color: Color.fromARGB(255, 109, 125, 129),
+                ),
+              ],
             ),
           ),
         ],

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
@@ -39,7 +41,7 @@ class _CategoriesState extends State<Categories> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 7.0),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.surface,
+                          color: getRandomColor(), // Random color
                           borderRadius: const BorderRadius.all(
                             Radius.circular(10.0),
                           ),
@@ -93,11 +95,7 @@ class _CategoriesState extends State<Categories> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 7.0),
                         decoration: BoxDecoration(
-                          color: getThemeModeColor.brightnessColor(
-                            context,
-                            lightColor: ColorConstants.lightConatinerColor,
-                            darkColor: ColorConstants.darkContainerColor,
-                          ),
+                          color: getRandomColor(), // Random color
                           borderRadius: const BorderRadius.all(
                             Radius.circular(10.0),
                           ),
@@ -140,6 +138,17 @@ class _CategoriesState extends State<Categories> {
           ],
         ),
       ),
+    );
+  }
+
+  // Function to generate a random color
+  Color getRandomColor() {
+    Random random = Random();
+    return Color.fromRGBO(
+      random.nextInt(256),
+      random.nextInt(256),
+      random.nextInt(256),
+      0.2,
     );
   }
 }

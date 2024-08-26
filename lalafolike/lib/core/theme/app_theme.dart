@@ -4,10 +4,10 @@ import 'package:lalafolike/core/theme/color_constants.dart';
 
 class AppThemeManager {
   static ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: const Color(0xffeef7ff),
     appBarTheme: const AppBarTheme(
       centerTitle: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xffeef7ff),
       systemOverlayStyle: SystemUiOverlayStyle.dark,
     ),
     cardColor: ColorConstants.white,
