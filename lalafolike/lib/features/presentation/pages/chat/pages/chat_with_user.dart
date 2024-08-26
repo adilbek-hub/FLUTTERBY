@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/custom_image_container.dart';
@@ -10,117 +11,6 @@ import 'package:lalafolike/features/presentation/basic_widgets/custom_text_field
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
 import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
 
-/*
-@RoutePage()
-class ChatWithUserPage extends StatefulWidget {
-  const ChatWithUserPage({Key? key}) : super(key: key);
-
-  @override
-  _ChatWithUserPageState createState() => _ChatWithUserPageState();
-}
-
-class _ChatWithUserPageState extends State<ChatWithUserPage> {
-  final CollectionReference _messages =
-      FirebaseFirestore.instance.collection('messages');
-  final TextEditingController _textEditingController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Chat App'),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: _messages.snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Center(
-                    child: Text('Error: ${snapshot.error}'),
-                  );
-                }
-
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                }
-
-                final messages = snapshot.data!.docs;
-                return ListView.builder(
-                  reverse: true,
-                  itemCount: messages.length,
-                  itemBuilder: (context, index) {
-                    final message = messages[index];
-                    return ListTile(
-                      title: Text(message['text']),
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _textEditingController,
-                    decoration: InputDecoration(
-                      hintText: 'Type a message',
-                    ),
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: () => _sendMessage(),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _sendMessage() async {
-    final text = _textEditingController.text.trim();
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      if (text.isNotEmpty) {
-        try {
-          await FirebaseFirestore.instance.collection('messages').add({
-            'text': text,
-            'timestamp': Timestamp.now(),
-            'userId': user.uid, // Колдонуучунун IDсин кошуу
-          });
-          _textEditingController.clear();
-        } catch (e) {
-          print('Error sending message: $e');
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text('Error'),
-                content: Text('Failed to send message. Please try again.'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: Text('OK'),
-                  ),
-                ],
-              );
-            },
-          );
-        }
-      }
-    } else {
-      print('User is not authenticated.');
-    }
-  }
-}
-*/
 class ChatService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Stream<QuerySnapshot> getMessages() {
@@ -136,7 +26,7 @@ class ChatService {
       try {
         await _firestore.collection('messages').add({
           'text': text,
-          'createdAt': FieldValue.serverTimestamp(),
+          'createdAt': Timestamp.now(),
           'userId': user.uid,
           'userName': user.displayName ?? 'Anonymous',
           'userAvatar': user.photoURL ?? '',
@@ -151,9 +41,24 @@ class ChatService {
 }
 
 @RoutePage()
-class ChatWithUserPage extends StatelessWidget {
+class ChatWithUserPage extends StatefulWidget {
   const ChatWithUserPage({super.key, required this.product});
   final ProductModel product;
+
+  @override
+  _ChatWithUserPageState createState() => _ChatWithUserPageState();
+}
+
+class _ChatWithUserPageState extends State<ChatWithUserPage> {
+  final ChatService _chatService = ChatService();
+  final TextEditingController _messageController = TextEditingController();
+
+  void _sendMessage() {
+    if (_messageController.text.trim().isNotEmpty) {
+      _chatService.sendMessage(_messageController.text.trim());
+      _messageController.clear();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -170,22 +75,28 @@ class ChatWithUserPage extends StatelessWidget {
               backgroundImage: AssetImage(AssetConstants.spider2.png),
             ),
             const SizedBox(width: 15),
-            const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppText(
-                  title: 'Spider Man',
-                  textType: TextType.body,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                ),
-                AppText(
-                  title: 'Был(а) в сети 14.08.2024',
-                  textType: TextType.promocode,
-                  color: Colors.black,
-                ),
-              ],
-            )
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppText(
+                    title: FirebaseAuth.instance.currentUser?.uid ?? '',
+                    textType: TextType.body,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                    overflow: TextOverflow.ellipsis, // Ensures ellipsis works
+                    maxLines: 1, // Limits to 1 line to trigger ellipsis
+                  ),
+                  const AppText(
+                    title: 'Был(а) в сети 14.08.2024',
+                    textType: TextType.promocode,
+                    color: Colors.black,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
         actions: [
@@ -197,9 +108,7 @@ class ChatWithUserPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const Divider(
-            color: ColorConstants.grey,
-          ),
+          const Divider(color: ColorConstants.grey),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
@@ -208,19 +117,19 @@ class ChatWithUserPage extends StatelessWidget {
                   width: 40,
                   height: 40,
                   borderRadius: 15,
-                  imageUrl: product.imageUrl ?? '',
+                  imageUrl: widget.product.imageUrl ?? '',
                 ),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText(
-                      title: product.description ?? '',
+                      title: widget.product.description ?? '',
                       textType: TextType.promocode,
                       color: ColorConstants.grey,
                     ),
                     AppText(
-                      title: '${product.price} сом',
+                      title: '${widget.product.price} сом',
                       textType: TextType.body,
                       color: ColorConstants.black,
                       fontWeight: FontWeight.w700,
@@ -234,11 +143,77 @@ class ChatWithUserPage extends StatelessWidget {
           ),
           const Divider(color: ColorConstants.grey),
           Expanded(
-            child: ListView.builder(
-                itemCount: 50,
-                itemBuilder: (context, index) {
-                  return const Text('Hello');
-                }),
+            child: StreamBuilder<QuerySnapshot>(
+              stream: _chatService.getMessages(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                final messages = snapshot.data!.docs;
+
+                return ListView.builder(
+                  reverse: true,
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    final message = messages[index];
+                    final isMe = message['userId'] ==
+                        FirebaseAuth.instance.currentUser?.uid;
+                    // Formats createdAt
+                    final Timestamp timestamp = message['createdAt'];
+                    final DateTime dateTime = timestamp.toDate();
+                    final String formattedTime =
+                        DateFormat('HH:mm').format(dateTime);
+                    final String formattedDate =
+                        DateFormat('dd.MM.yy').format(dateTime);
+
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5.0, horizontal: 10.0),
+                      child: Align(
+                        alignment:
+                            isMe ? Alignment.centerRight : Alignment.centerLeft,
+                        child: SizedBox(
+                          width: isMe
+                              ? 200.0
+                              : 240.0, // Set width based on isMe condition
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: isMe ? Colors.blue : Colors.grey[200],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  message['text'] ?? '',
+                                  style: TextStyle(
+                                    color: isMe ? Colors.white : Colors.black,
+                                  ),
+                                ),
+                                const SizedBox(height: 5),
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    formattedDate,
+                                    style: TextStyle(
+                                      color:
+                                          isMe ? Colors.white : Colors.black54,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -288,7 +263,7 @@ class ChatWithUserPage extends StatelessWidget {
                         const SizedBox(width: 10),
                         Expanded(
                           child: CustomTextField(
-                            controller: TextEditingController(),
+                            controller: _messageController,
                             hintText: 'Сообщение...',
                             borderColor: Theme.of(context).colorScheme.surface,
                             borderRadius: 15.0,
@@ -301,10 +276,14 @@ class ChatWithUserPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        const CircleAvatar(
+                        GestureDetector(
+                          onTap: _sendMessage,
+                          child: const CircleAvatar(
                             backgroundColor: Colors.green,
                             child:
-                                Icon(Icons.arrow_upward, color: Colors.white)),
+                                Icon(Icons.arrow_upward, color: Colors.white),
+                          ),
+                        ),
                       ],
                     )
                   ],
