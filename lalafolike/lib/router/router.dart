@@ -60,7 +60,7 @@ class AppRouter extends _$AppRouter {
               page: FromSignInSignUpRouterRoute.page,
               initial: false,
               children: [
-                AutoRoute(page: SignInSignUpRoute.page, initial: false),
+                AutoRoute(page: ProfileRoute.page, initial: false),
               ]),
         ]),
       ];

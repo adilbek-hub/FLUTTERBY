@@ -16,7 +16,7 @@ class OnBoardingPage extends StatelessWidget {
         HomeRoute(),
         FavoriteRoute(),
         ChatsRoute(),
-        SignInSignUpRoute(),
+        ProfileRoute(),
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
