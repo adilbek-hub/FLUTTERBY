@@ -24,7 +24,7 @@ class OnBoardingPage extends StatelessWidget {
           onRefresh: () async {},
           child: Scaffold(
             resizeToAvoidBottomInset:
-                false, // Баскычтоп пайда болгондо өлчөмүн өзгөртүүгө жол бербейт
+                false,
             body: child,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,

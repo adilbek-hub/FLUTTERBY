@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:lalafolike/core/theme/get_theme_mode_color.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
@@ -11,6 +12,7 @@ import 'package:lalafolike/features/presentation/pages/home/widget/flat_rent.dar
 import 'package:lalafolike/features/presentation/pages/home/widget/product_card.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/search_filter.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/see_all_categories_text_button.dart';
+import 'package:lalafolike/features/presentation/pages/on_boarding/widget/navigator_bar.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -85,3 +87,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+

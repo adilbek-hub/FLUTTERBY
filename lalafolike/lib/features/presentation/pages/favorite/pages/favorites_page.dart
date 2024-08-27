@@ -106,7 +106,7 @@ class _FavoritePageState extends State<FavoritePage> with FavoritePageMixin {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 100, vertical: 10),
                     onPressed: () {
-                      context.pushRoute(const HomeRoute());
+                      context.pushRoute(HomeRoute());
                     },
                   ),
                 ],

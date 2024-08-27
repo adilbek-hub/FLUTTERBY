@@ -55,9 +55,14 @@ class AuthService {
   Future<void> signOut({required BuildContext context}) async {
     await FirebaseAuth.instance.signOut();
     await Future.delayed(const Duration(seconds: 2));
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return const HomePage();
-    }));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const HomePage();
+        },
+      ),
+    );
   }
 
   Future<void> _deleteUser() async {
