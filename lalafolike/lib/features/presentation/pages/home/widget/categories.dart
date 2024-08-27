@@ -41,7 +41,7 @@ class _CategoriesState extends State<Categories> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 7.0),
                         decoration: BoxDecoration(
-                          color: getRandomColor(), // Random color
+                          color: getRandomColor(),
                           borderRadius: const BorderRadius.all(
                             Radius.circular(10.0),
                           ),
@@ -62,17 +62,18 @@ class _CategoriesState extends State<Categories> {
                                 AppText(
                                   title: f.name,
                                   textType: TextType.subtitle,
-                                  color:
-                                      getThemeModeColor.brighnessTheme(context),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .displayMedium!
+                                      .color,
                                 ),
                                 AppText(
                                   textType: TextType.promocode,
                                   title: f.price.toString(),
-                                  color: getThemeModeColor.brightnessColor(
-                                    context,
-                                    lightColor: ColorConstants.lightTextColor,
-                                    darkColor: ColorConstants.darkTextColor,
-                                  ),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .displayLarge!
+                                      .color,
                                 ),
                               ],
                             ),
@@ -114,17 +115,18 @@ class _CategoriesState extends State<Categories> {
                                 AppText(
                                   title: f.name,
                                   textType: TextType.subtitle,
-                                  color:
-                                      getThemeModeColor.brighnessTheme(context),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .displayMedium!
+                                      .color,
                                 ),
                                 AppText(
                                   title: f.price.toString(),
                                   textType: TextType.promocode,
-                                  color: getThemeModeColor.brightnessColor(
-                                    context,
-                                    lightColor: ColorConstants.lightTextColor,
-                                    darkColor: ColorConstants.darkTextColor,
-                                  ),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .displayLarge!
+                                      .color,
                                 ),
                               ],
                             ),
@@ -141,7 +143,6 @@ class _CategoriesState extends State<Categories> {
     );
   }
 
-  // Function to generate a random color
   Color getRandomColor() {
     Random random = Random();
     return Color.fromRGBO(

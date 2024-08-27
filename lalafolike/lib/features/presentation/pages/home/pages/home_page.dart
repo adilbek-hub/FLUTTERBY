@@ -46,8 +46,8 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: AppText(
                       title: 'Аренда квартир',
-                      textType: TextType.subtitle,
-                      color: getThemeModeColor.brighnessTheme(context),
+                      textType: TextType.header,
+                      color: Theme.of(context).textTheme.displayMedium!.color,
                       fontWeight: FontWeight.w700,
                     ),
                   ),

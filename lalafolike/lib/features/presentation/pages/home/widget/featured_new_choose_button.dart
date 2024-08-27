@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lalafolike/core/theme/color_constants.dart';
-import 'package:lalafolike/core/theme/get_theme_mode_color.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 
 class FeaturedNewChooseButton extends StatefulWidget {
@@ -26,11 +24,7 @@ class _FeaturedNewChooseButtonState extends State<FeaturedNewChooseButton> {
             width: MediaQuery.of(context).size.width,
             height: 38,
             decoration: BoxDecoration(
-              color: getThemeModeColor.brightnessColor(
-                context,
-                lightColor: ColorConstants.lightConatinerColor,
-                darkColor: ColorConstants.darkContainerColor,
-              ),
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
@@ -49,20 +43,16 @@ class _FeaturedNewChooseButtonState extends State<FeaturedNewChooseButton> {
                       height: 34,
                       decoration: BoxDecoration(
                         color: _isRecommendedSelected
-                            ? getThemeModeColor.brightnessColor(
-                                context,
-                                lightColor: ColorConstants.white,
-                                darkColor: ColorConstants.darkbgcolor,
-                              )
+                            ? Theme.of(context).colorScheme.onSurface
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       alignment: Alignment.center,
                       child: AppText(
                         title: 'Рекомендуемые',
-                        textType: TextType.subtitle,
-                        fontWeight: FontWeight.bold,
-                        color: getThemeModeColor.brighnessTheme(context),
+                        textType: TextType.header,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).textTheme.displayMedium!.color,
                       ),
                     ),
                   ),
@@ -79,20 +69,16 @@ class _FeaturedNewChooseButtonState extends State<FeaturedNewChooseButton> {
                       height: 34,
                       decoration: BoxDecoration(
                         color: !_isRecommendedSelected
-                            ? getThemeModeColor.brightnessColor(
-                                context,
-                                lightColor: ColorConstants.white,
-                                darkColor: ColorConstants.darkbgcolor,
-                              )
+                            ? Theme.of(context).colorScheme.onSurface
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       alignment: Alignment.center,
                       child: AppText(
                         title: 'Новые',
-                        textType: TextType.subtitle,
-                        fontWeight: FontWeight.bold,
-                        color: getThemeModeColor.brighnessTheme(context),
+                        textType: TextType.header,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).textTheme.displayMedium!.color,
                       ),
                     ),
                   ),

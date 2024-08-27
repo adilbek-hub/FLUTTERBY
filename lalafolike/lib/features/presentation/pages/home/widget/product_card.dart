@@ -37,9 +37,10 @@ class ProductCard extends StatelessWidget {
           Text(
             '${product.price!} KGS',
             style: product.discountPrice != null
-                ? const TextStyle(
-                    color: Colors.grey,
+                ? TextStyle(
+                    color: Theme.of(context).textTheme.displayLarge!.color,
                     decoration: TextDecoration.lineThrough,
+                    decorationColor: Colors.grey,
                   )
                 : TextStyle(
                     color: getThemeModeColor.brighnessTheme(context),
@@ -66,7 +67,11 @@ class ProductCard extends StatelessWidget {
             ),
           ),
         if (product.description?.isNotEmpty ?? false)
-          Text(product.description!),
+          Text(
+            product.description!,
+            style: TextStyle(
+                color: Theme.of(context).textTheme.displayMedium!.color),
+          ),
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

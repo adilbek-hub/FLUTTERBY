@@ -200,7 +200,7 @@ class _ChatWithUserPageState extends State<ChatWithUserPage> {
                                   child: Text(
                                     formattedDate,
                                     style: TextStyle(
-                                      color: isMe ? Color.fromARGB(255, 109, 125, 129) : Color.fromARGB(255, 109, 125, 129),
+                                      color: isMe ? const Color.fromARGB(255, 109, 125, 129) : Color.fromARGB(255, 109, 125, 129),
                                       fontSize: 13,
                                     ),
                                   ),

@@ -13,12 +13,22 @@ class AppThemeManager {
     cardColor: ColorConstants.white,
     cardTheme: const CardTheme(
         surfaceTintColor: ColorConstants.white, color: ColorConstants.white),
+    textTheme: const TextTheme(
+        displayLarge: TextStyle(
+          color: ColorConstants.lightTextColor,
+          fontSize: 12,
+        ),
+        displayMedium: TextStyle(
+          color: Colors.black,
+        )),
     colorScheme: ColorScheme.light(
-        primary: ColorConstants.primary,
-        onPrimary: ColorConstants.white,
-        secondaryContainer: ColorConstants.primary.withOpacity(0.6),
-        brightness: Brightness.light,
-        surface: ColorConstants.lightConatinerColor),
+      primary: ColorConstants.primary,
+      onPrimary: ColorConstants.white,
+      secondaryContainer: ColorConstants.primary.withOpacity(0.6),
+      brightness: Brightness.light,
+      surface: const Color.fromARGB(255, 215, 227, 237),
+      onSurface: const Color.fromARGB(255, 245, 250, 255),
+    ),
     expansionTileTheme: const ExpansionTileThemeData(
         textColor: ColorConstants.black,
         shape: RoundedRectangleBorder(side: BorderSide.none)),
@@ -32,12 +42,31 @@ class AppThemeManager {
       fillColor: WidgetStateProperty.all(ColorConstants.lightGrey),
     ),
     navigationBarTheme: NavigationBarThemeData(
-      labelTextStyle: WidgetStateProperty.all(
-        const TextStyle(
-          fontSize: 14,
-          color: ColorConstants.grey,
-        ),
-      ),
+  
+      backgroundColor: const Color.fromARGB(255, 239, 248, 255),
+      indicatorColor: Colors.transparent,
+      labelTextStyle: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return const TextStyle(
+            fontSize: 12,
+            color: Colors.green,
+          );
+        }
+        return const TextStyle(
+          fontSize: 12,
+          color: ColorConstants.lightTextColor,
+        );
+      }),
+      iconTheme: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return const IconThemeData(
+            color: Colors.green,
+          );
+        }
+        return const IconThemeData(
+          color: Colors.grey,
+        );
+      }),
     ),
   );
 
