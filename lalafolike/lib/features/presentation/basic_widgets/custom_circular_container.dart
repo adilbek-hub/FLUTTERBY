@@ -7,12 +7,12 @@ class CustomCircularContainer extends StatelessWidget {
   final ImageProvider? image;
 
   const CustomCircularContainer({
-    Key? key,
-    this.size = 60.0,
+    super.key,
+    this.size = 45.0,
     this.backgroundColor = Colors.grey,
     this.child,
     this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 
 class AppThemeManager {
@@ -13,14 +14,17 @@ class AppThemeManager {
     cardColor: ColorConstants.white,
     cardTheme: const CardTheme(
         surfaceTintColor: ColorConstants.white, color: ColorConstants.white),
-    textTheme: const TextTheme(
+    textTheme: GoogleFonts.ubuntuTextTheme(
+      const TextTheme(
         displayLarge: TextStyle(
           color: ColorConstants.lightTextColor,
           fontSize: 12,
         ),
         displayMedium: TextStyle(
           color: Colors.black,
-        )),
+        ),
+      ),
+    ),
     colorScheme: ColorScheme.light(
       primary: ColorConstants.primary,
       onPrimary: ColorConstants.white,
@@ -42,7 +46,6 @@ class AppThemeManager {
       fillColor: WidgetStateProperty.all(ColorConstants.lightGrey),
     ),
     navigationBarTheme: NavigationBarThemeData(
-  
       backgroundColor: const Color.fromARGB(255, 239, 248, 255),
       indicatorColor: Colors.transparent,
       labelTextStyle: WidgetStateProperty.resolveWith((states) {

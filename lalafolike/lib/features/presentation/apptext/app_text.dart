@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 
-enum TextType { header, body, title, subtitle, promocode }
+enum TextType { bigheader, header, body, title, subtitle, promocode }
 
 class AppText extends StatelessWidget {
   const AppText({
@@ -53,6 +53,12 @@ class AppText extends StatelessWidget {
 
   TextStyle getTextStyle(TextType type) {
     switch (type) {
+      case TextType.bigheader:
+        return const TextStyle(
+          color: ColorConstants.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+        );
       case TextType.header:
         return const TextStyle(
           color: ColorConstants.primary,
