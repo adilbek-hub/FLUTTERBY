@@ -18,7 +18,7 @@ class VallerCard extends StatelessWidget {
             children: [
               CustomCircularContainer(
                 backgroundColor: Theme.of(context).colorScheme.surface,
-                child: const Icon(Icons.edit_notifications),
+                child: const Icon(Icons.equalizer),
               ),
               const SizedBox(
                 width: 20,
@@ -26,7 +26,7 @@ class VallerCard extends StatelessWidget {
               AppText(
                 title: 'Эффективность',
                 textType: TextType.body,
-                color: Theme.of(context).textTheme.displayLarge!.color,
+                color: Theme.of(context).textTheme.displayMedium!.color,
               ),
               const Spacer(),
               const Icon(Icons.chevron_right),
@@ -39,7 +39,9 @@ class VallerCard extends StatelessWidget {
           Row(
             children: [
               CustomCircularContainer(
-                  backgroundColor: Theme.of(context).colorScheme.surface),
+                backgroundColor: Theme.of(context).colorScheme.surface,
+                child: const Icon(Icons.equalizer),
+              ),
               const SizedBox(
                 width: 20,
               ),
@@ -49,7 +51,7 @@ class VallerCard extends StatelessWidget {
                   AppText(
                     title: 'Кошелек',
                     textType: TextType.body,
-                    color: Theme.of(context).textTheme.displayLarge!.color,
+                    color: Theme.of(context).textTheme.displayMedium!.color,
                   ),
                   const AppText(
                     color: Colors.grey,

@@ -1,4 +1,92 @@
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+// class ProductModel {
+//   final int? id;
+//   final int? categoryId;
+//   final double? price;
+//   final double? discountPrice;
+//   final String? vacation;
+//   final String? description;
+//   final String? imageUrl;
+//   final String? name;
+//   final String? state;
+//   final String? model;
+//   final String? mileagekm;
+//   final String? year;
+//   final String? body;
+//   final String? transmission;
+//   final String? fuel;
+//   final String? engineVolume;
+//   final String? color;
+//   final String? steeringWheel;
+//   final String? inStock;
+//   final String? drive;
+//   final String? calculation;
+//   final String? technicalStates;
+//   final String? vinCode;
+//   final String? warranty;
+//   final String? bodyType;
+
+//   ProductModel({
+//     this.transmission,
+//     this.fuel,
+//     this.engineVolume,
+//     this.color,
+//     this.steeringWheel,
+//     this.inStock,
+//     this.drive,
+//     this.calculation,
+//     this.technicalStates,
+//     this.vinCode,
+//     this.warranty,
+//     this.bodyType,
+//     this.id,
+//     this.categoryId,
+//     this.price,
+//     this.discountPrice,
+//     this.vacation,
+//     this.description,
+//     this.imageUrl,
+//     this.name,
+//     this.state,
+//     this.model,
+//     this.mileagekm,
+//     this.year,
+//     this.body,
+//   });
+
+//   factory ProductModel.fromFirestore(DocumentSnapshot doc) {
+//     return ProductModel(
+//       id: doc['id'] as int?,
+//       categoryId: doc['categoryId'] as int?,
+//       price: doc['price'] as double?,
+//       discountPrice: doc['discountPrice'] as double?,
+//       vacation: doc['vacation'] as String?,
+//       description: doc['description'] as String?,
+//       imageUrl: doc['imageUrl'] as String?,
+//       name: doc['name'] as String?,
+//       state: doc['state'] as String?,
+//       model: doc['model'] as String?,
+//       mileagekm: doc['mileagekm'] as String?,
+//       year: doc['year'] as String?,
+//       body: doc['body'] as String?,
+//       transmission: doc['transmission'] as String?,
+//       fuel: doc['fuel'] as String?,
+//       engineVolume: doc['engineVolume'] as String?,
+//       color: doc['color'] as String?,
+//       steeringWheel: doc['steeringWheel'] as String?,
+//       inStock: doc['inStock'] as String?,
+//       drive: doc['drive'] as String?,
+//       calculation: doc['calculation'] as String?,
+//       technicalStates: doc['technicalStates'] as String?,
+//       vinCode: doc['vinCode'] as String?,
+//       warranty: doc['warranty'] as String?,
+//       bodyType: doc['bodyType'] as String?,
+//     );
+//   }
+// }
+
 
 class ProductModel {
   final int? id;

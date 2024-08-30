@@ -149,7 +149,7 @@ abstract class _$AppRouter extends RootStackRouter {
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child:  ProfilePage(),
+        child: const ProfilePage(),
       );
     },
     SettingRoute.name: (routeData) {

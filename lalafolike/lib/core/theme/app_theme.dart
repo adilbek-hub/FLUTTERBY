@@ -23,16 +23,27 @@ class AppThemeManager {
         displayMedium: TextStyle(
           color: Colors.black,
         ),
+        displaySmall: TextStyle(
+          color: Colors.white,
+        ),
       ),
     ),
-    colorScheme: ColorScheme.light(
-      primary: ColorConstants.primary,
-      onPrimary: ColorConstants.white,
-      secondaryContainer: ColorConstants.primary.withOpacity(0.6),
-      brightness: Brightness.light,
-      surface: const Color.fromARGB(255, 215, 227, 237),
-      onSurface: const Color.fromARGB(255, 245, 250, 255),
+    iconTheme: const IconThemeData(color: ColorConstants.lightTextColor),
+    tabBarTheme: const TabBarTheme(
+      labelColor: Colors.green,
+      unselectedLabelColor: ColorConstants.lightTextColor,
+        indicatorColor: Colors.green,
+           dividerColor: Colors.grey,
+              labelStyle: TextStyle(fontSize: 15),
     ),
+    colorScheme: ColorScheme.light(
+        primary: ColorConstants.primary,
+        onPrimary: ColorConstants.white,
+        secondaryContainer: ColorConstants.primary.withOpacity(0.6),
+        brightness: Brightness.light,
+        surface: const Color.fromARGB(255, 215, 227, 237),
+        onSurface: const Color.fromARGB(255, 245, 250, 255),
+        primaryContainer: Colors.green),
     expansionTileTheme: const ExpansionTileThemeData(
         textColor: ColorConstants.black,
         shape: RoundedRectangleBorder(side: BorderSide.none)),

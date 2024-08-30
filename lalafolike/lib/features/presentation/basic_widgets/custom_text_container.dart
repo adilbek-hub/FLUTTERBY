@@ -11,6 +11,7 @@ class CustomTextContainer extends StatelessWidget {
   final Color borderColor;
   final TextType textType;
   final Color? colorText;
+  final FontWeight? fontWeight;
 
   const CustomTextContainer({
     super.key,
@@ -23,6 +24,7 @@ class CustomTextContainer extends StatelessWidget {
     this.borderColor = Colors.green,
     this.textType = TextType.body,
     this.colorText,
+    this.fontWeight = FontWeight.w100,
   });
 
   @override
@@ -36,9 +38,9 @@ class CustomTextContainer extends StatelessWidget {
           border: Border.all(width: borderWidth, color: borderColor),
         ),
         child: AppText(
-          title: text,
-          textType: textType,
-          color: colorText,
-        ));
+            title: text,
+            textType: textType,
+            color: colorText,
+            fontWeight: fontWeight));
   }
 }

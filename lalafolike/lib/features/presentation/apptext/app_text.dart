@@ -57,7 +57,7 @@ class AppText extends StatelessWidget {
         return const TextStyle(
           color: ColorConstants.white,
           fontWeight: FontWeight.bold,
-          fontSize: 30,
+          fontSize: 28,
         );
       case TextType.header:
         return const TextStyle(

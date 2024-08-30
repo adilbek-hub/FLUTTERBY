@@ -21,6 +21,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _isRecommendedSelected = true;
+  List<ProductModel> products = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchProducts();
+  }
+
+  Future<void> _fetchProducts() async {
+    // final firebaseService = FirebaseService();
+    // final fetchedProducts = await firebaseService.getProducts();
+    setState(() {
+      // products = fetchedProducts;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

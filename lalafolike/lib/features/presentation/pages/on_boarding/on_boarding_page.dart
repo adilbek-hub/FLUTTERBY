@@ -20,17 +20,13 @@ class OnBoardingPage extends StatelessWidget {
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
-        return RefreshIndicator.adaptive(
-          onRefresh: () async {},
-          child: Scaffold(
-            resizeToAvoidBottomInset:
-                false,
-            body: child,
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
-            floatingActionButton: const FloatingAction(),
-            bottomNavigationBar: NavigationBars(tabsRouter: tabsRouter),
-          ),
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: child,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: const FloatingAction(),
+          bottomNavigationBar: NavigationBars(tabsRouter: tabsRouter),
         );
       },
     );

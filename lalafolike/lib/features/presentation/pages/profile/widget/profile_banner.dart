@@ -1,35 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/custom_card.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/custom_text_container.dart';
+import 'package:lalafolike/features/presentation/pages/profile/bloc/profilebanner_bloc.dart';
 import 'package:lalafolike/features/presentation/pages/profile/model/advert.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProfileBanner extends StatelessWidget {
   ProfileBanner({super.key});
 
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<DocumentSnapshot>(
-      future: firestore.collection('Adverts').doc('QmI6qePI7huZzHXCCaDS').get(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return _buildShimmerEffect();
-        }
-        if (snapshot.hasError) {
-          return Center(child: Text('Something went wrong: ${snapshot.error}'));
-        }
-
-        if (!snapshot.hasData || !snapshot.data!.exists) {
-          return const Center(child: Text('No data found'));
-        }
-
-        final advert = Advert.fromDocument(snapshot.data!);
-
-        return CustomCard(
+    return BlocProvider(
+      create: (context) => ProfileBannerBloc(),
+      child: BlocBuilder<ProfileBannerBloc, ProfileBannerState>(
+        builder: (context, state) {
+          if (state is InitialProfileBannerState) {
+            return _buildShimmerEffect();
+          } else if (state is LoadingProfileBannerState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is LoadedProfileBannerState) {
+            final advert = state.advert;
+            return  CustomCard(
           backgroundColor: const Color.fromARGB(255, 18, 128, 218),
           content: Column(
             children: [
@@ -40,7 +34,7 @@ class ProfileBanner extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: const Color.fromARGB(255, 244, 66, 66),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: Text(
@@ -51,7 +45,6 @@ class ProfileBanner extends StatelessWidget {
                 ],
               ),
               AppText(title: advert.title, textType: TextType.bigheader),
-              const SizedBox(height: 10),
               AppText(
                 textAlign: TextAlign.center,
                 color: Colors.white,
@@ -60,17 +53,23 @@ class ProfileBanner extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               CustomTextContainer(
-                borderRadius: 20,
+                borderRadius: 25,
                 color: Colors.white,
                 padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                    const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
                 text: advert.button,
                 colorText: Colors.black,
               ),
             ],
           ),
         );
-      },
+          } else if (state is ErrorProfileBannerState) {
+            return Center(child: Text('Something went wrong: ${state.message}'));
+          } else {
+            throw Exception('Unexpected state: $state');
+          }
+        },
+      ),
     );
   }
 

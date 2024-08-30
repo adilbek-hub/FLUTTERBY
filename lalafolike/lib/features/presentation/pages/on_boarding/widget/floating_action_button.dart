@@ -10,8 +10,7 @@ class FloatingAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: getThemeModeColor.brightnessColor(context,
-          lightColor: ColorConstants.green, darkColor: ColorConstants.green),
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       onPressed: () => context.pushRoute(const AnnouncementsRoute()),
       child: Icon(
