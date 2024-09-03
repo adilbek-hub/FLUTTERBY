@@ -10,6 +10,7 @@ import 'package:lalafolike/features/presentation/pages/home/widget/flat_rent.dar
 import 'package:lalafolike/features/presentation/pages/home/widget/product_card.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/search_filter.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/see_all_categories_text_button.dart';
+import 'package:lalafolike/router/router.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -88,7 +89,11 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSpacing: 4.0,
                   children:
                       (_isRecommendedSelected ? recomendedProducts : products)
-                          .map((product) => ProductCard(product: product))
+                          .map((product) => InkWell(
+                              onTap: () {
+                                context.router.push( ProductDetailRoute(productModel: product));
+                              },
+                              child: ProductCard(product: product)))
                           .toList(),
                 ),
               ),

@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/custom_card.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/custom_text_container.dart';
 import 'package:lalafolike/features/presentation/pages/profile/bloc/profilebanner_bloc.dart';
-import 'package:lalafolike/features/presentation/pages/profile/model/advert.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProfileBanner extends StatelessWidget {

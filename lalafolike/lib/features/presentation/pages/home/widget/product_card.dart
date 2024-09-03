@@ -85,20 +85,7 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(3),
-                  ),
-                  child: Text(
-                    'pro'.toUpperCase(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 9,
-                    ),
-                  ),
-                ),
+                const ProContainer(),
               ],
             ),
             const Row(
@@ -112,6 +99,30 @@ class ProductCard extends StatelessWidget {
         ),
         const SizedBox(height: 30),
       ],
+    );
+  }
+}
+
+class ProContainer extends StatelessWidget {
+  const ProContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(3),
+      ),
+      child: Text(
+        'pro'.toUpperCase(),
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 9,
+        ),
+      ),
     );
   }
 }

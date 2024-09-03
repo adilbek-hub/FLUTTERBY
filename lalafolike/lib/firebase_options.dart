@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:689326513263:android:4b78c6d1b2424d1b00019a',
     messagingSenderId: '689326513263',
     projectId: 'lala-9f3aa',
+    databaseURL: 'https://lala-9f3aa-default-rtdb.firebaseio.com',
     storageBucket: 'lala-9f3aa.appspot.com',
   );
 
@@ -62,6 +63,7 @@ class DefaultFirebaseOptions {
     appId: '1:689326513263:ios:cb21629f77c4f0c000019a',
     messagingSenderId: '689326513263',
     projectId: 'lala-9f3aa',
+    databaseURL: 'https://lala-9f3aa-default-rtdb.firebaseio.com',
     storageBucket: 'lala-9f3aa.appspot.com',
     iosBundleId: 'com.tatadev.lalafolike',
   );

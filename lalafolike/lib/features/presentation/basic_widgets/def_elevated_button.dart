@@ -12,6 +12,8 @@ class DefElevatedButton extends StatelessWidget {
   final TextType textType;
   final double? width;
   final double? height;
+  final Color? borderColor;
+  final double? borderWidth;
 
   const DefElevatedButton({
     super.key,
@@ -25,6 +27,8 @@ class DefElevatedButton extends StatelessWidget {
     this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
     this.width = double.infinity,
     this.height = 50.0,
+    this.borderColor,
+    this.borderWidth,
   });
 
   @override
@@ -36,6 +40,10 @@ class DefElevatedButton extends StatelessWidget {
           onPressed: onPressed,
           style: style ??
               ElevatedButton.styleFrom(
+                side: BorderSide(
+                  color: borderColor ?? Colors.transparent,
+                  width: borderWidth ?? 0.0,
+                ),
                 backgroundColor: backgroundColor,
                 textStyle: TextStyle(fontSize: fontSize),
               ),

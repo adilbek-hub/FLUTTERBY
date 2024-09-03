@@ -28,7 +28,7 @@ class AppThemeManager {
         ),
       ),
     ),
-    iconTheme: const IconThemeData(color: ColorConstants.lightTextColor),
+    iconTheme: const IconThemeData(color: Color.fromARGB(255, 146, 157, 170)),
     tabBarTheme: const TabBarTheme(
       labelColor: Colors.green,
       unselectedLabelColor: ColorConstants.lightTextColor,

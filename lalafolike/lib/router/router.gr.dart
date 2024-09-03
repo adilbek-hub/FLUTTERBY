@@ -146,6 +146,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ProductDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProductDetailPage(
+          key: args.key,
+          productModel: args.productModel,
+        ),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -567,6 +577,44 @@ class PriceRouteArgs {
   @override
   String toString() {
     return 'PriceRouteArgs{key: $key, sunCategoryName: $sunCategoryName}';
+  }
+}
+
+/// generated route for
+/// [ProductDetailPage]
+class ProductDetailRoute extends PageRouteInfo<ProductDetailRouteArgs> {
+  ProductDetailRoute({
+    Key? key,
+    required ProductModel productModel,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProductDetailRoute.name,
+          args: ProductDetailRouteArgs(
+            key: key,
+            productModel: productModel,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductDetailRoute';
+
+  static const PageInfo<ProductDetailRouteArgs> page =
+      PageInfo<ProductDetailRouteArgs>(name);
+}
+
+class ProductDetailRouteArgs {
+  const ProductDetailRouteArgs({
+    this.key,
+    required this.productModel,
+  });
+
+  final Key? key;
+
+  final ProductModel productModel;
+
+  @override
+  String toString() {
+    return 'ProductDetailRouteArgs{key: $key, productModel: $productModel}';
   }
 }
 

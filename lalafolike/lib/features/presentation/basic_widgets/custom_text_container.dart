@@ -38,6 +38,7 @@ class CustomTextContainer extends StatelessWidget {
           border: Border.all(width: borderWidth, color: borderColor),
         ),
         child: AppText(
+            textAlign: TextAlign.center,
             title: text,
             textType: textType,
             color: colorText,
