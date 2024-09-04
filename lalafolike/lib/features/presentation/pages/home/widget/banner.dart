@@ -33,14 +33,18 @@ class DarkerImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(imageUrl),
-          fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            Colors.black.withOpacity(darkenValue),
-            BlendMode.darken,
+    return Banner(
+      message: 'Баннер',
+      location: BannerLocation.topStart,
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(imageUrl),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(darkenValue),
+              BlendMode.darken,
+            ),
           ),
         ),
       ),

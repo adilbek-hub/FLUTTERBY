@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
 import 'package:lalafolike/features/presentation/pages/favorite/mixins/favorite_page_mixin.dart';
-import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
-import 'package:lalafolike/features/presentation/pages/home/widget/product_card.dart';
 import 'package:lalafolike/router/router.dart';
 
 @RoutePage()
@@ -61,11 +58,12 @@ class _FavoritePageState extends State<FavoritePage> with FavoritePageMixin {
         ],
         body: TabBarView(
           children: [
-            CustomScrollView(
+            const CustomScrollView(
               slivers: [
-                const SliverToBoxAdapter(
+                SliverToBoxAdapter(
                   child: SizedBox(height: 20),
                 ),
+                /*
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -79,6 +77,7 @@ class _FavoritePageState extends State<FavoritePage> with FavoritePageMixin {
                     ),
                   ),
                 ),
+                */
               ],
             ),
             Center(
@@ -106,7 +105,7 @@ class _FavoritePageState extends State<FavoritePage> with FavoritePageMixin {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 100, vertical: 10),
                     onPressed: () {
-                      context.pushRoute(HomeRoute());
+                      context.pushRoute(const HomeRoute());
                     },
                   ),
                 ],

@@ -35,6 +35,7 @@ part "router.gr.dart";
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
+        AutoRoute(page: ProductDetailRoute.page, initial: false),
         AutoRoute(page: NotificationRoute.page, initial: false),
         AutoRoute(page: ChatWithUserRoute.page, initial: false),
         AutoRoute(page: FilterRoute.page, initial: false),
@@ -54,7 +55,6 @@ class AppRouter extends _$AppRouter {
             AutoRoute(page: HomeRoute.page, initial: false),
             AutoRoute(page: CategoryDetailRoute.page, initial: false),
             AutoRoute(page: CategoryRoute.page),
-            AutoRoute(page: ProductDetailRoute.page, initial: false),
           ]),
           AutoRoute(page: FavoriteRoute.page, initial: false),
           AutoRoute(page: ChatsRoute.page, initial: false),

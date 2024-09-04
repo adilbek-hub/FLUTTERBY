@@ -9,36 +9,10 @@ import 'package:lalafolike/features/presentation/basic_widgets/custom_image_cont
 import 'package:lalafolike/features/presentation/basic_widgets/custom_text_container.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/custom_text_field.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
+import 'package:lalafolike/features/presentation/pages/chat/data/chat_service.dart';
 import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
 
-class ChatService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  Stream<QuerySnapshot> getMessages() {
-    return FirebaseFirestore.instance
-        .collection('messages')
-        .orderBy('createdAt', descending: true)
-        .snapshots();
-  }
 
-  Future<void> sendMessage(String text) async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      try {
-        await _firestore.collection('messages').add({
-          'text': text,
-          'createdAt': Timestamp.now(),
-          'userId': user.uid,
-          'userName': user.displayName ?? 'Anonymous',
-          'userAvatar': user.photoURL ?? '',
-        });
-      } catch (e) {
-        print('Билдирүүнү жөнөтүүдө ката кетти: $e');
-      }
-    } else {
-      print('Колдонуучу катталган эмес');
-    }
-  }
-}
 
 @RoutePage()
 class ChatWithUserPage extends StatefulWidget {

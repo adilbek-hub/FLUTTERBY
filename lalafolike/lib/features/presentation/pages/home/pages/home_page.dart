@@ -1,8 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
-import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/banner.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/categories.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/featured_new_choose_button.dart';
@@ -10,7 +11,6 @@ import 'package:lalafolike/features/presentation/pages/home/widget/flat_rent.dar
 import 'package:lalafolike/features/presentation/pages/home/widget/product_card.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/search_filter.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/see_all_categories_text_button.dart';
-import 'package:lalafolike/router/router.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -22,21 +22,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _isRecommendedSelected = true;
-  List<ProductModel> products = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchProducts();
-  }
-
-  Future<void> _fetchProducts() async {
-    // final firebaseService = FirebaseService();
-    // final fetchedProducts = await firebaseService.getProducts();
-    setState(() {
-      // products = fetchedProducts;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,24 +68,69 @@ class _HomePageState extends State<HomePage> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: StaggeredGrid.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16.0,
-                  mainAxisSpacing: 4.0,
-                  children:
-                      (_isRecommendedSelected ? recomendedProducts : products)
-                          .map((product) => InkWell(
-                              onTap: () {
-                                context.router.push( ProductDetailRoute(productModel: product));
-                              },
-                              child: ProductCard(product: product)))
-                          .toList(),
-                ),
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection('recommendedProducts')
+                        .snapshots(),
+                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      if (snapshot.hasError) {
+                        return Center(child: Text('Error: ${snapshot.error}'));
+                      }
+                      if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                        return const Center(child: Text('No data available'));
+                      }
+                      final recommendedProduct = snapshot.data!.docs;
+                      return StaggeredGrid.count(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 16.0,
+                        mainAxisSpacing: 4.0,
+                        children: (_isRecommendedSelected
+                                ? recommendedProduct
+                                : recommendedProduct)
+                            .map(
+                              (product) => InkWell(
+                                onTap: () {},
+                                child: ProductCard(
+                                  image: product['image'],
+                                  price: product['price'],
+                                  discountPrice: product['discountPrice'],
+                                  vacation: product['vacation'],
+                                  description: product['description'],
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      );
+                    }),
               ),
             ),
           ],
         ),
       ),
     );
+  }
+}
+
+class FireStoreDataBase {
+  String? downloadURL;
+  Future getData() async {
+    try {
+      await downloadUrlExample();
+      return downloadURL;
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
+
+  Future<void> downloadUrlExample() async {
+    downloadURL = await FirebaseStorage.instance
+        .ref()
+        .child('Flutter.png')
+        .getDownloadURL();
+    debugPrint(downloadURL.toString());
   }
 }

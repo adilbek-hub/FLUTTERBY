@@ -2,41 +2,52 @@ import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/core/theme/get_theme_mode_color.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
-import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/vip_view.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.product});
-  final ProductModel product;
+  const ProductCard({
+    super.key,
+    this.price,
+    this.discountPrice,
+    this.vacation,
+    this.description,
+    this.image,
+  });
+
+  final int? price;
+  final int? discountPrice;
+  final String? vacation;
+  final String? description;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (product.imageUrl?.isNotEmpty ?? false)
-          Stack(
-            children: [
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: SizedBox(
-                    width: 180,
-                    height: 180,
-                    child: Image.asset(
-                      product.imageUrl!,
-                      fit: BoxFit.cover,
-                    ),
+        // if (product.imageUrl?.isNotEmpty ?? false)
+        Stack(
+          children: [
+            Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: SizedBox(
+                  width: 180,
+                  height: 180,
+                  child: Image.asset(
+                    image ?? '',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              const Positioned(top: 12, left: 12, child: VipView())
-            ],
-          ),
-        if (product.price != null)
+            ),
+            const Positioned(top: 12, left: 12, child: VipView())
+          ],
+        ),
+        if (price != null)
           Text(
-            '${product.price!} KGS',
-            style: product.discountPrice != null
+            '$price KGS',
+            style: discountPrice != null
                 ? TextStyle(
                     color: Theme.of(context).textTheme.displayLarge!.color,
                     decoration: TextDecoration.lineThrough,
@@ -47,9 +58,9 @@ class ProductCard extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
           ),
-        if (product.discountPrice != null)
+        if (discountPrice != null)
           Text(
-            '${product.discountPrice!} KGS',
+            '$discountPrice KGS',
             style: TextStyle(
               color: getThemeModeColor.brightnessColor(
                 context,
@@ -59,16 +70,16 @@ class ProductCard extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-        if (product.vacation?.isNotEmpty ?? false)
+        if (vacation?.isNotEmpty ?? false)
           Text(
-            product.vacation!,
+            vacation ?? '',
             style: const TextStyle(
               color: Colors.grey,
             ),
           ),
-        if (product.description?.isNotEmpty ?? false)
+        if (description?.isNotEmpty ?? false)
           Text(
-            product.description!,
+            description ?? '',
             style: TextStyle(
                 color: Theme.of(context).textTheme.displayMedium!.color),
           ),

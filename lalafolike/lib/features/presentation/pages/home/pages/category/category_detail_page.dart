@@ -97,6 +97,7 @@ class _CategoryDetailPageState extends State<CategoryDetailPage> {
               ),
             ),
           ),
+          /*
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -125,6 +126,7 @@ class _CategoryDetailPageState extends State<CategoryDetailPage> {
               ),
             ),
           ),
+          */
         ],
       ),
     );

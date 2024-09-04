@@ -1,93 +1,119 @@
-import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+class ProductModel {
+  final int? id;
+  final int? categoryId;
+  final double? price;
+  final double? discountPrice;
+  final String? vacation;
+  final String? description;
+  final String? imageUrl;
+  final String? name;
+  final String? state;
+  final String? model;
+  final String? mileagekm;
+  final String? year;
+  final String? body;
+  final String? transmission;
+  final String? fuel;
+  final String? engineVolume;
+  final String? color;
+  final String? steeringWheel;
+  final String? inStock;
+  final String? drive;
+  final String? calculation;
+  final String? technicalStates;
+  final String? vinCode;
+  final String? warranty;
+  final String? bodyType;
 
-// class ProductModel {
-//   final int? id;
-//   final int? categoryId;
-//   final double? price;
-//   final double? discountPrice;
-//   final String? vacation;
-//   final String? description;
-//   final String? imageUrl;
-//   final String? name;
-//   final String? state;
-//   final String? model;
-//   final String? mileagekm;
-//   final String? year;
-//   final String? body;
-//   final String? transmission;
-//   final String? fuel;
-//   final String? engineVolume;
-//   final String? color;
-//   final String? steeringWheel;
-//   final String? inStock;
-//   final String? drive;
-//   final String? calculation;
-//   final String? technicalStates;
-//   final String? vinCode;
-//   final String? warranty;
-//   final String? bodyType;
+  ProductModel({
+    this.transmission,
+    this.fuel,
+    this.engineVolume,
+    this.color,
+    this.steeringWheel,
+    this.inStock,
+    this.drive,
+    this.calculation,
+    this.technicalStates,
+    this.vinCode,
+    this.warranty,
+    this.bodyType,
+    this.id,
+    this.categoryId,
+    this.price,
+    this.discountPrice,
+    this.vacation,
+    this.description,
+    this.imageUrl,
+    this.name,
+    this.state,
+    this.model,
+    this.mileagekm,
+    this.year,
+    this.body,
+  });
 
-//   ProductModel({
-//     this.transmission,
-//     this.fuel,
-//     this.engineVolume,
-//     this.color,
-//     this.steeringWheel,
-//     this.inStock,
-//     this.drive,
-//     this.calculation,
-//     this.technicalStates,
-//     this.vinCode,
-//     this.warranty,
-//     this.bodyType,
-//     this.id,
-//     this.categoryId,
-//     this.price,
-//     this.discountPrice,
-//     this.vacation,
-//     this.description,
-//     this.imageUrl,
-//     this.name,
-//     this.state,
-//     this.model,
-//     this.mileagekm,
-//     this.year,
-//     this.body,
-//   });
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'categoryId': categoryId,
+      'price': price,
+      'discountPrice': discountPrice,
+      'vacation': vacation,
+      'description': description,
+      'imageUrl': imageUrl,
+      'name': name,
+      'state': state,
+      'model': model,
+      'mileagekm': mileagekm,
+      'year': year,
+      'body': body,
+      'transmission': transmission,
+      'fuel': fuel,
+      'engineVolume': engineVolume,
+      'color': color,
+      'steeringWheel': steeringWheel,
+      'inStock': inStock,
+      'drive': drive,
+      'calculation': calculation,
+      'technicalStates': technicalStates,
+      'vinCode': vinCode,
+      'warranty': warranty,
+      'bodyType': bodyType,
+    };
+  }
 
-//   factory ProductModel.fromFirestore(DocumentSnapshot doc) {
-//     return ProductModel(
-//       id: doc['id'] as int?,
-//       categoryId: doc['categoryId'] as int?,
-//       price: doc['price'] as double?,
-//       discountPrice: doc['discountPrice'] as double?,
-//       vacation: doc['vacation'] as String?,
-//       description: doc['description'] as String?,
-//       imageUrl: doc['imageUrl'] as String?,
-//       name: doc['name'] as String?,
-//       state: doc['state'] as String?,
-//       model: doc['model'] as String?,
-//       mileagekm: doc['mileagekm'] as String?,
-//       year: doc['year'] as String?,
-//       body: doc['body'] as String?,
-//       transmission: doc['transmission'] as String?,
-//       fuel: doc['fuel'] as String?,
-//       engineVolume: doc['engineVolume'] as String?,
-//       color: doc['color'] as String?,
-//       steeringWheel: doc['steeringWheel'] as String?,
-//       inStock: doc['inStock'] as String?,
-//       drive: doc['drive'] as String?,
-//       calculation: doc['calculation'] as String?,
-//       technicalStates: doc['technicalStates'] as String?,
-//       vinCode: doc['vinCode'] as String?,
-//       warranty: doc['warranty'] as String?,
-//       bodyType: doc['bodyType'] as String?,
-//     );
-//   }
-// }
-
-
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
+    return ProductModel(
+      id: map['id'],
+      categoryId: map['categoryId'],
+      price: map['price'],
+      discountPrice: map['discountPrice'],
+      vacation: map['vacation'],
+      description: map['description'],
+      imageUrl: map['imageUrl'],
+      name: map['name'],
+      state: map['state'],
+      model: map['model'],
+      mileagekm: map['mileagekm'],
+      year: map['year'],
+      body: map['body'],
+      transmission: map['transmission'],
+      fuel: map['fuel'],
+      engineVolume: map['engineVolume'],
+      color: map['color'],
+      steeringWheel: map['steeringWheel'],
+      inStock: map['inStock'],
+      drive: map['drive'],
+      calculation: map['calculation'],
+      technicalStates: map['technicalStates'],
+      vinCode: map['vinCode'],
+      warranty: map['warranty'],
+      bodyType: map['bodyType'],
+    );
+  }
+}
+/*
 class ProductModel {
   final int? id;
   final int? categoryId;
@@ -514,7 +540,7 @@ List<ProductModel> recomendedProducts = [
     price: 10000,
     discountPrice: null,
     vacation: '7 дней',
-    description: 'Поставим кондер дешево но безполезно',
+    description: 'Поставим кондер дешево',
     imageUrl: AssetConstants.konder.webp,
   ),
   ProductModel(
@@ -586,3 +612,4 @@ List<ProductModel> recomendedProducts = [
     imageUrl: AssetConstants.iphonee.webp,
   ),
 ];
+*/

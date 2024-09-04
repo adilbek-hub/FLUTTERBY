@@ -8,7 +8,7 @@ class CustomTextContainer extends StatelessWidget {
   final Color color;
   final double borderRadius;
   final double borderWidth;
-  final Color borderColor;
+  final Color? borderColor;
   final TextType textType;
   final Color? colorText;
   final FontWeight? fontWeight;
@@ -21,7 +21,7 @@ class CustomTextContainer extends StatelessWidget {
     this.color = Colors.green,
     this.borderRadius = 10.0,
     this.borderWidth = 0.5,
-    this.borderColor = Colors.green,
+    this.borderColor,
     this.textType = TextType.body,
     this.colorText,
     this.fontWeight = FontWeight.w100,
@@ -35,7 +35,7 @@ class CustomTextContainer extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(borderRadius),
-          border: Border.all(width: borderWidth, color: borderColor),
+          border: Border.all(width: borderWidth, color: borderColor ?? Colors.transparent),
         ),
         child: AppText(
             textAlign: TextAlign.center,
