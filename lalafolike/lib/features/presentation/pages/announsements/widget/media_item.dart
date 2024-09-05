@@ -30,7 +30,8 @@ class MediaItem extends StatelessWidget {
   }
 
   Widget _buildMediaWidget() {
-    return media.widget;
+    return SizedBox(
+        height: double.infinity, width: double.infinity, child: media.widget);
   }
 
   Widget _buildIsSelectedOverlay() {

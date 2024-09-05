@@ -12,7 +12,7 @@ class ChatListView extends StatelessWidget {
     this.onTap,
   });
 
-  final ProductModel product;
+  final ProductsFromFirbase product;
   final void Function()? onTap;
 
   @override

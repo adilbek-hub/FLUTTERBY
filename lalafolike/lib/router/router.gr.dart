@@ -346,7 +346,7 @@ class CategoryRoute extends PageRouteInfo<void> {
 class ChatWithUserRoute extends PageRouteInfo<ChatWithUserRouteArgs> {
   ChatWithUserRoute({
     Key? key,
-    required ProductModel product,
+    required ProductsFromFirbase product,
     List<PageRouteInfo>? children,
   }) : super(
           ChatWithUserRoute.name,
@@ -371,7 +371,7 @@ class ChatWithUserRouteArgs {
 
   final Key? key;
 
-  final ProductModel product;
+  final ProductsFromFirbase product;
 
   @override
   String toString() {
@@ -585,7 +585,7 @@ class PriceRouteArgs {
 class ProductDetailRoute extends PageRouteInfo<ProductDetailRouteArgs> {
   ProductDetailRoute({
     Key? key,
-    required ProductModel productModel,
+    required ProductsFromFirbase productModel,
     List<PageRouteInfo>? children,
   }) : super(
           ProductDetailRoute.name,
@@ -610,7 +610,7 @@ class ProductDetailRouteArgs {
 
   final Key? key;
 
-  final ProductModel productModel;
+  final ProductsFromFirbase productModel;
 
   @override
   String toString() {

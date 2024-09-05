@@ -55,7 +55,7 @@ class ChatsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                /*
+                
                 Expanded(
                   child: ListView.builder(
                     itemCount: products.length,
@@ -68,7 +68,7 @@ class ChatsPage extends StatelessWidget {
                     },
                   ),
                 ),
-                */
+                
               ],
             ),
           ),

@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/circular_image.dart';
@@ -19,7 +18,7 @@ import 'package:share_plus/share_plus.dart';
 @RoutePage()
 class ProductDetailPage extends StatefulWidget {
   const ProductDetailPage({super.key, required this.productModel});
-  final ProductModel productModel;
+  final ProductsFromFirbase productModel;
 
   @override
   State<ProductDetailPage> createState() => _ProductDetailPageState();
@@ -454,7 +453,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             child: CustomTextField(
                               controller: _messageController,
                               hintText: 'Сообщение...',
-                              
                               borderColor: ColorConstants.lightConatinerColor,
                               borderRadius: 15.0,
                               borderWidth: 2.0,

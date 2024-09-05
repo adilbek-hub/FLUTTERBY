@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
+import 'package:lalafolike/features/presentation/pages/announsements/services/loading_service.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/announsementviewprossent.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/caregories_images_cart.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/categories_text_cart.dart';
@@ -293,9 +294,10 @@ class _AnnounsementviewPageState extends State<AnnounsementviewPage> {
         child: BottomAppBarButton(
           onTap: () async {
             await audioPlayers.play(AssetSource(AssetConstants.correct.mp3));
-            _showCongratsNotifier.value = true;
-            await Future.delayed(const Duration(seconds: 2));
-            _showCongratsNotifier.value = false;
+            // _showCongratsNotifier.value = true;
+            // _showCongratsNotifier.value = false;
+            await Future.delayed(const Duration(seconds: 1));
+            loadingService.showLoading(context);
           },
         ),
       ),

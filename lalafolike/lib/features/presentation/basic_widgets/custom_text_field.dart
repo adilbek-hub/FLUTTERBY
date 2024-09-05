@@ -11,11 +11,13 @@ class CustomTextField extends StatelessWidget {
   final TextStyle? textStyle;
   final int maxLines;
   final double height;
+  final TextStyle? hintTextStyle;
 
   const CustomTextField({
     super.key,
     required this.controller,
     this.hintText = 'Enter your message...',
+    this.hintTextStyle,
     this.borderRadius = 10.0,
     this.borderColor = Colors.grey,
     this.borderWidth = 1.0,
@@ -35,6 +37,7 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: padding,
         hintText: hintText,
+        hintStyle: hintTextStyle,
         filled: true,
         fillColor: backgroundColor,
         border: OutlineInputBorder(

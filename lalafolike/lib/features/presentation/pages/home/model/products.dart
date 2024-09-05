@@ -1,4 +1,6 @@
-class ProductModel {
+import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
+
+class ProductsFromFirbase {
   final int? id;
   final int? categoryId;
   final double? price;
@@ -25,7 +27,7 @@ class ProductModel {
   final String? warranty;
   final String? bodyType;
 
-  ProductModel({
+  ProductsFromFirbase({
     this.transmission,
     this.fuel,
     this.engineVolume,
@@ -83,8 +85,8 @@ class ProductModel {
     };
   }
 
-  factory ProductModel.fromMap(Map<String, dynamic> map) {
-    return ProductModel(
+  factory ProductsFromFirbase.fromMap(Map<String, dynamic> map) {
+    return ProductsFromFirbase(
       id: map['id'],
       categoryId: map['categoryId'],
       price: map['price'],
@@ -113,7 +115,7 @@ class ProductModel {
     );
   }
 }
-/*
+
 class ProductModel {
   final int? id;
   final int? categoryId;
@@ -184,7 +186,7 @@ class ProductModel {
   });
 }
 
-final ProductModel mersedes = ProductModel(
+final ProductsFromFirbase mersedes = ProductsFromFirbase(
   id: 1,
   categoryId: 1,
   price: 300400,
@@ -192,7 +194,7 @@ final ProductModel mersedes = ProductModel(
   name: 'Mercedes-Benz E-55: 2000 г.5.5л,Автомат,Бензин',
   imageUrl: AssetConstants.mersE55.jpg,
 );
-final ProductModel mersedesE55 = ProductModel(
+final ProductsFromFirbase mersedesE55 = ProductsFromFirbase(
   id: 2,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -205,7 +207,7 @@ final ProductModel mersedesE55 = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel mersedesSClass = ProductModel(
+final ProductsFromFirbase mersedesSClass = ProductsFromFirbase(
   id: 3,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -218,7 +220,7 @@ final ProductModel mersedesSClass = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel wwpassat = ProductModel(
+final ProductsFromFirbase wwpassat = ProductsFromFirbase(
   id: 4,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -231,7 +233,7 @@ final ProductModel wwpassat = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel kiak5 = ProductModel(
+final ProductsFromFirbase kiak5 = ProductsFromFirbase(
   id: 19,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -244,7 +246,7 @@ final ProductModel kiak5 = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel changanBi = ProductModel(
+final ProductsFromFirbase changanBi = ProductsFromFirbase(
   id: 5,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -257,7 +259,7 @@ final ProductModel changanBi = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel sprinter22SDI = ProductModel(
+final ProductsFromFirbase sprinter22SDI = ProductsFromFirbase(
   id: 20,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -270,7 +272,7 @@ final ProductModel sprinter22SDI = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel mersedesS350 = ProductModel(
+final ProductsFromFirbase mersedesS350 = ProductsFromFirbase(
   id: 6,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -283,7 +285,7 @@ final ProductModel mersedesS350 = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel toyotaHilux = ProductModel(
+final ProductsFromFirbase toyotaHilux = ProductsFromFirbase(
   id: 7,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -296,7 +298,7 @@ final ProductModel toyotaHilux = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel wwGolf = ProductModel(
+final ProductsFromFirbase wwGolf = ProductsFromFirbase(
   id: 8,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -309,7 +311,7 @@ final ProductModel wwGolf = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel hindaySonata = ProductModel(
+final ProductsFromFirbase hindaySonata = ProductsFromFirbase(
   id: 9,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -322,7 +324,7 @@ final ProductModel hindaySonata = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel porter = ProductModel(
+final ProductsFromFirbase porter = ProductsFromFirbase(
   id: 10,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -335,7 +337,7 @@ final ProductModel porter = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel toyotaLandCruiser = ProductModel(
+final ProductsFromFirbase toyotaLandCruiser = ProductsFromFirbase(
   id: 11,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -348,7 +350,7 @@ final ProductModel toyotaLandCruiser = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel maped = ProductModel(
+final ProductsFromFirbase maped = ProductsFromFirbase(
   id: 12,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -361,7 +363,7 @@ final ProductModel maped = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel skuterTank = ProductModel(
+final ProductsFromFirbase skuterTank = ProductsFromFirbase(
   id: 13,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -374,7 +376,7 @@ final ProductModel skuterTank = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel wwPassat2001 = ProductModel(
+final ProductsFromFirbase wwPassat2001 = ProductsFromFirbase(
   id: 14,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -387,7 +389,7 @@ final ProductModel wwPassat2001 = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel hondaFit = ProductModel(
+final ProductsFromFirbase hondaFit = ProductsFromFirbase(
   id: 15,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -400,7 +402,7 @@ final ProductModel hondaFit = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel bmwX2 = ProductModel(
+final ProductsFromFirbase bmwX2 = ProductsFromFirbase(
   id: 16,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -413,7 +415,7 @@ final ProductModel bmwX2 = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel hundayGranduer = ProductModel(
+final ProductsFromFirbase hundayGranduer = ProductsFromFirbase(
   id: 17,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -426,7 +428,7 @@ final ProductModel hundayGranduer = ProductModel(
   fuel: 'Бензин',
   transmission: 'Автомат',
 );
-final ProductModel bmwX5M = ProductModel(
+final ProductsFromFirbase bmwX5M = ProductsFromFirbase(
   id: 18,
   categoryId: 1,
   imageUrl: AssetConstants.mersE55.jpg,
@@ -440,7 +442,7 @@ final ProductModel bmwX5M = ProductModel(
   transmission: 'Автомат',
 );
 
-List<ProductModel> products = [
+List<ProductsFromFirbase> products = [
   mersedes,
   mersedesSClass,
   wwpassat,
@@ -460,73 +462,73 @@ List<ProductModel> products = [
   bmwX2,
   hundayGranduer,
   bmwX5M,
-  ProductModel(
+  ProductsFromFirbase(
       price: 50000,
       discountPrice: null,
       vacation: '6 дней',
       description: 'Описание',
       imageUrl: AssetConstants.leonardo.jpg),
-  ProductModel(
+  ProductsFromFirbase(
       price: 50000,
       vacation: '6 дней',
       description: '1 комната, Собственник',
       imageUrl: AssetConstants.car.png),
-  ProductModel(
+  ProductsFromFirbase(
       price: 50000,
       discountPrice: null,
       vacation: '6 дней',
       description: '1 комната, Собственник',
       imageUrl: AssetConstants.car1.png),
-  ProductModel(
+  ProductsFromFirbase(
     price: 50000,
     discountPrice: 5000,
     vacation: '7 дней',
     description: ' 1 комната, Собственник, С мебелью частично',
     imageUrl: AssetConstants.car2.png,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.car3.png,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.car4.png,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.cat1.png,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.cat2.png,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.comp1.png,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.comp2.png,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
@@ -535,76 +537,76 @@ List<ProductModel> products = [
   ),
 ];
 
-List<ProductModel> recomendedProducts = [
-  ProductModel(
+List<ProductsFromFirbase> recomendedProducts = [
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: null,
     vacation: '7 дней',
     description: 'Поставим кондер дешево',
     imageUrl: AssetConstants.konder.webp,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     vacation: '7 дней',
     description: 'Поставим кондер хорошо',
     imageUrl: AssetConstants.konder2.jpg,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: null,
     vacation: '7 дней',
     description: '1 комната, Собственник',
     imageUrl: AssetConstants.flat.png,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: ' 1 комната, Собственник, С мебелью частично',
     imageUrl: AssetConstants.laptopInRoom.jpg,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.tables.jpg,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.carr.webp,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.dressInRoom.jpg,
   ),
-  ProductModel(
+  ProductsFromFirbase(
       price: 10000,
       discountPrice: 8000,
       vacation: '7 дней',
       description: 'Описание',
       imageUrl: AssetConstants.whiteHome.jpg),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.cat.jpg,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
     description: 'Описание',
     imageUrl: AssetConstants.camera.jpg,
   ),
-  ProductModel(
+  ProductsFromFirbase(
     price: 10000,
     discountPrice: 8000,
     vacation: '7 дней',
@@ -612,4 +614,3 @@ List<ProductModel> recomendedProducts = [
     imageUrl: AssetConstants.iphonee.webp,
   ),
 ];
-*/

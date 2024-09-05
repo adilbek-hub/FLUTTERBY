@@ -12,12 +12,10 @@ import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
 import 'package:lalafolike/features/presentation/pages/chat/data/chat_service.dart';
 import 'package:lalafolike/features/presentation/pages/home/model/products.dart';
 
-
-
 @RoutePage()
 class ChatWithUserPage extends StatefulWidget {
   const ChatWithUserPage({super.key, required this.product});
-  final ProductModel product;
+  final ProductsFromFirbase product;
 
   @override
   _ChatWithUserPageState createState() => _ChatWithUserPageState();
@@ -174,7 +172,10 @@ class _ChatWithUserPageState extends State<ChatWithUserPage> {
                                   child: Text(
                                     formattedDate,
                                     style: TextStyle(
-                                      color: isMe ? const Color.fromARGB(255, 109, 125, 129) : Color.fromARGB(255, 109, 125, 129),
+                                      color: isMe
+                                          ? const Color.fromARGB(
+                                              255, 109, 125, 129)
+                                          : Color.fromARGB(255, 109, 125, 129),
                                       fontSize: 13,
                                     ),
                                   ),

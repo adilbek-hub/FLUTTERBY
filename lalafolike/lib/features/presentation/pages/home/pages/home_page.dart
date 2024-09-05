@@ -94,7 +94,6 @@ class _HomePageState extends State<HomePage> {
                               (product) => InkWell(
                                 onTap: () {},
                                 child: ProductCard(
-                                  image: product['image'],
                                   price: product['price'],
                                   discountPrice: product['discountPrice'],
                                   vacation: product['vacation'],

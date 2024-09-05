@@ -6,15 +6,17 @@ abstract class ProductState extends Equatable {
   @override
   List<Object?> get props => [];
 }
+
 class ProductInitial extends ProductState {}
 
 class ProductLoading extends ProductState {}
 
 class ProductLoaded extends ProductState {
-  final List<ProductModel> recommendedProducts;
-  final List<ProductModel> products;
+  final List<ProductsFromFirbase> recommendedProducts;
+  final List<ProductsFromFirbase> products;
 
-  const ProductLoaded({required this.recommendedProducts, required this.products});
+  const ProductLoaded(
+      {required this.recommendedProducts, required this.products});
 }
 
 class ProductError extends ProductState {

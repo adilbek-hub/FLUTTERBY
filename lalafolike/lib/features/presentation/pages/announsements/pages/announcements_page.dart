@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
 import 'package:lalafolike/core/theme/get_theme_mode_color.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
+import 'package:lalafolike/features/presentation/basic_widgets/custom_text_field.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/fetch_albums.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/fetch_medias.dart';
@@ -53,11 +54,18 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
     }
   }
 
+  int count = 0;
+  final int maxLength = 6000;
   @override
   void initState() {
     super.initState();
     _loadAlbums();
     _scrollController.addListener(_loadMoreMedias);
+    _controller.addListener(() {
+      setState(() {
+        count = _controller.text.length;
+      });
+    });
   }
 
   void _loadMoreMedias() {
@@ -134,6 +142,8 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
     }
   }
 
+  final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,154 +168,154 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
           SizedBox(width: 10),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 13),
-            child: Column(
-              children: [
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    double containerWidth = (constraints.maxWidth - 6 * 2) / 4;
-                    return Wrap(
-                      direction: Axis.horizontal,
-                      alignment: WrapAlignment.start,
-                      spacing: 3.0,
-                      runAlignment: WrapAlignment.start,
-                      runSpacing: 5.0,
-                      children: <Widget>[
-                        Container(
-                          width: containerWidth,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[350],
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: IconButton(
-                            icon: const Icon(
-                              Icons.camera_alt,
-                              color: Colors.grey,
+      // Ensure the widgets move when the keyboard is shown
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 13),
+              child: Column(
+                children: [
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double containerWidth =
+                          (constraints.maxWidth - 6 * 2) / 4;
+                      return Wrap(
+                        direction: Axis.horizontal,
+                        alignment: WrapAlignment.start,
+                        spacing: 3.0,
+                        runAlignment: WrapAlignment.start,
+                        runSpacing: 5.0,
+                        children: <Widget>[
+                          Container(
+                            width: containerWidth,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[350],
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            onPressed: _pickImageFromCamera,
-                          ),
-                        ),
-                        Container(
-                          width: containerWidth,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[350],
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: IconButton(
-                            icon: const Icon(
-                              Icons.copy_sharp,
-                              color: Colors.grey,
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.camera_alt,
+                                color: Colors.grey,
+                              ),
+                              onPressed: _pickImageFromCamera,
                             ),
-                            onPressed: handleGalleryButton,
                           ),
-                        ),
-                        ..._medias.take(6).map(
-                          (media) {
-                            return SizedBox(
-                              width: containerWidth,
-                              height: 100,
-                              child: InkWell(
-                                onTap: () => _selectedMedia(media),
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      width: 100,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.15),
-                                        borderRadius: BorderRadius.circular(10),
+                          Container(
+                            width: containerWidth,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[350],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.copy_sharp,
+                                color: Colors.grey,
+                              ),
+                              onPressed: handleGalleryButton,
+                            ),
+                          ),
+                          ..._medias.take(6).map(
+                            (media) {
+                              return SizedBox(
+                                width: containerWidth,
+                                height: 100,
+                                child: InkWell(
+                                  onTap: () => _selectedMedia(media),
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          color: Colors.black.withOpacity(0.15),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: media.widget,
                                       ),
-                                      child: media.widget,
-                                    ),
-                                    if (_selectedMedias.contains(media))
-                                      Positioned.fill(
-                                        child: Container(
-                                          color: Colors.black.withOpacity(0.1),
-                                          child: const Center(
-                                            child: Icon(
-                                              Icons.check_circle_rounded,
-                                              color: Colors.white,
-                                              size: 30,
+                                      if (_selectedMedias.contains(media))
+                                        Positioned.fill(
+                                          child: Container(
+                                            color:
+                                                Colors.black.withOpacity(0.1),
+                                            child: const Center(
+                                              child: Icon(
+                                                Icons.check_circle_rounded,
+                                                color: Colors.white,
+                                                size: 30,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                ),
-                const SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: AppText(
-                    title: 'Описание объявления',
-                    textType: TextType.subtitle,
-                    fontWeight: FontWeight.w800,
-                    color: getThemeModeColor.brighnessTheme(context),
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    },
                   ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: SizedBox(
-              height: 100,
-              child: GridViewImagesAdded(
-                  scrollController: _scrollController,
-                  selectedMedias: _selectedMedias),
-            ),
-          ),
-          const SizedBox(height: 5),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 13),
-            child: Column(
-              children: [
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: AppText(
-                    title: 'Выбранные фото',
-                    textType: TextType.promocode,
-                    color: ColorConstants.grey,
-                  ),
-                ),
-                const SizedBox(height: 30),
-                TextField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    hintStyle: const TextStyle(color: ColorConstants.grey),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green, width: 1.0),
+                  const SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: AppText(
+                      title: 'Описание объявления',
+                      textType: TextType.subtitle,
+                      fontWeight: FontWeight.w800,
+                      color: getThemeModeColor.brighnessTheme(context),
                     ),
-                    hintText: 'Опишите ваш товар или услугу',
                   ),
-                ),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: AppText(
-                    title: '0/6000',
-                    textType: TextType.promocode,
-                    color: ColorConstants.grey,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          )
-        ],
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: SizedBox(
+                height: 100,
+                child: GridViewImagesAdded(
+                    scrollController: _scrollController,
+                    selectedMedias: _selectedMedias),
+              ),
+            ),
+            const SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 13),
+              child: Column(
+                children: [
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: AppText(
+                      title: 'Выбранные фото',
+                      textType: TextType.promocode,
+                      color: ColorConstants.grey,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  CustomTextField(
+                    controller: _controller,
+                    maxLines: 3,
+                    hintText: 'Опишите ваш товар или услугу',
+                    hintTextStyle: const TextStyle(color: ColorConstants.grey),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: AppText(
+                      title: '$count/${maxLength - count}',
+                      textType: TextType.promocode,
+                      color: ColorConstants.grey,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: DefElevatedButton(
@@ -396,17 +406,26 @@ class _GalleryPageState extends State<GalleryPage> {
         actions: [
           DropdownButton<AssetPathEntity>(
             borderRadius: BorderRadius.circular(16),
+            dropdownColor: Colors.white,
             value: _currentAlbum,
             items: _albums
                 .map(
                   (e) => DropdownMenuItem<AssetPathEntity>(
-                      value: e, child: Text(e.name.isEmpty ? "0" : e.name)),
+                    value: e,
+                    child: SizedBox(
+                      width: 160,
+                      child: Text(
+                        e.name.isEmpty ? "0" : e.name,
+                        style: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
                 )
                 .toList(),
             onChanged: (value) {
               setState(() {
                 _currentAlbum = value;
-                _lastPage = 0;
                 _lastPage = 0;
                 _medias.clear();
               });
@@ -414,6 +433,7 @@ class _GalleryPageState extends State<GalleryPage> {
               _scrollController.jumpTo(0.0);
             },
           ),
+          const SizedBox(width: 10),
           GestureDetector(
             onTap: () => Navigator.pop(context, _selectedMedias),
             child: const AppText(
