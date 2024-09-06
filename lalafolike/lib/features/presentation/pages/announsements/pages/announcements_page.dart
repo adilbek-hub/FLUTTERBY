@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lalafolike/core/theme/color_constants.dart';
-import 'package:lalafolike/core/theme/get_theme_mode_color.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/custom_text_field.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/def_elevated_button.dart';
@@ -129,16 +128,44 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
     });
   }
 
-  void _checkImageAndSubmit() {
+  void _checkImageAndSubmit(List<Media> selectedMedias) async {
     if (_selectedMedias.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Картинка не добавлена')),
+        SnackBar(
+          content: const Text(
+            'Картинка не добавлена',
+            style: TextStyle(fontSize: 16),
+          ),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          backgroundColor: Colors.red,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          duration: const Duration(seconds: 2),
+        ),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Изображение добавлено и обработано')),
+      final snackBar = SnackBar(
+        duration: const Duration(seconds: 1, milliseconds: 500),
+        content: const Text(
+          'Картинка добавлена',
+          style: TextStyle(fontSize: 16),
+        ),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        backgroundColor: Colors.green,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       );
-      context.router.push(const AnnounSementsCategoryRoute());
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      await Future.delayed(const Duration(seconds: 2));
+      context.router.push(
+        AnnounSementsCategoryRoute(selectedMedias: selectedMedias),
+      );
     }
   }
 
@@ -157,7 +184,7 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
         title: AppText(
           title: 'Объявления',
           textType: TextType.body,
-          color: getThemeModeColor.brighnessTheme(context),
+          color: Theme.of(context).textTheme.displayMedium!.color,
         ),
         actions: const [
           AppText(
@@ -267,7 +294,7 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
                       title: 'Описание объявления',
                       textType: TextType.subtitle,
                       fontWeight: FontWeight.w800,
-                      color: getThemeModeColor.brighnessTheme(context),
+                      color: Theme.of(context).textTheme.displayLarge!.color,
                     ),
                   ),
                 ],
@@ -322,7 +349,7 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
           backgroundColor: ColorConstants.green,
           title: 'Добавить',
           onPressed: () {
-            _checkImageAndSubmit();
+            _checkImageAndSubmit(_selectedMedias);
           },
         ),
       ),

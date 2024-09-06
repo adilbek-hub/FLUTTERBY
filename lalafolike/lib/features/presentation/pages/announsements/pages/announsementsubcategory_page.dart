@@ -4,18 +4,20 @@ import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/search_button.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/model/announsemmentmodel.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/cardcategory_text.dart';
+import 'package:lalafolike/features/presentation/pages/announsements/widget/media.dart';
 import 'package:lalafolike/router/router.dart';
 
 @RoutePage()
 class AnnounSementsSubCategoryPage extends StatelessWidget {
-  final String subCategoryName;
-  final List<ChildrenAnnounsement> subcategory;
-
   const AnnounSementsSubCategoryPage({
     super.key,
     required this.subCategoryName,
     required this.subcategory,
+    required this.selectedMedias,
   });
+  final String subCategoryName;
+  final List<ChildrenAnnounsement> subcategory;
+  final List<Media> selectedMedias;
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +82,17 @@ class AnnounSementsSubCategoryPage extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) =>
                                       AnnounSementsSubCategoryPage(
-                                          subCategoryName: child.name,
-                                          subcategory: child.children!),
+                                    subCategoryName: child.name,
+                                    subcategory: child.children!,
+                                    selectedMedias: selectedMedias,
+                                  ),
                                 ),
                               )
                           : () => context.router.push(
-                                PriceRoute(sunCategoryName: child.name),
+                                PriceRoute(
+                                  sunCategoryName: child.name,
+                                  selectedMedia: selectedMedias,
+                                ),
                               ),
                       child: Row(
                         children: [

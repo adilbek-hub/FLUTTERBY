@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 
 class CategoriesTextsCart extends StatelessWidget {
-  const CategoriesTextsCart({
-    super.key,
-  });
+  const CategoriesTextsCart({super.key, required this.categoryName});
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +17,8 @@ class CategoriesTextsCart extends StatelessWidget {
         color: Colors.green,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: const AppText(
-        title: 'Категория',
+      child: AppText(
+        title: categoryName,
         textType: TextType.subtitle,
         color: Colors.white,
       ),

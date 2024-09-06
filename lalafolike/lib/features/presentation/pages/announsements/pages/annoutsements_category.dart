@@ -4,11 +4,13 @@ import 'package:lalafolike/features/presentation/apptext/app_text.dart';
 import 'package:lalafolike/features/presentation/basic_widgets/search_button.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/model/announsemmentmodel.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/announsementcategory_view.dart';
+import 'package:lalafolike/features/presentation/pages/announsements/widget/media.dart';
 import 'package:lalafolike/router/router.dart';
 
 @RoutePage()
 class AnnounSementsCategoryPage extends StatelessWidget {
-  const AnnounSementsCategoryPage({super.key});
+  const AnnounSementsCategoryPage({super.key, required this.selectedMedias});
+  final List<Media> selectedMedias;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,8 @@ class AnnounSementsCategoryPage extends StatelessWidget {
                     ? () => context.router.push(
                           AnnounSementsSubCategoryRoute(
                               subCategoryName: category.name,
-                              subcategory: category.children!),
+                              subcategory: category.children!,
+                              selectedMedias: selectedMedias),
                         )
                     : null,
               );

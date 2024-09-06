@@ -6,10 +6,14 @@ import 'package:lalafolike/features/presentation/pages/announsements/widget/kgsu
 import 'package:lalafolike/features/presentation/pages/announsements/widget/price_field.dart';
 import 'package:lalafolike/router/router.dart';
 
+import '../widget/media.dart';
+
 @RoutePage()
 class PricePage extends StatefulWidget {
-  const PricePage({super.key, required this.sunCategoryName});
+  const PricePage(
+      {super.key, required this.sunCategoryName, required this.selectedMedia});
   final String sunCategoryName;
+  final List<Media> selectedMedia;
 
   @override
   State<PricePage> createState() => _PricePageState();
@@ -141,8 +145,9 @@ class _PricePageState extends State<PricePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () =>
-                        context.router.push(const AnnounsementviewRoute()),
+                    onTap: () => context.router.push(AnnounsementviewRoute(
+                        selectedMedias: widget.selectedMedia,
+                        categoriesName: widget.sunCategoryName)),
                     child: ValueListenableBuilder<bool>(
                       valueListenable: _isAmountEntered,
                       builder: (context, isAmountEntered, child) {

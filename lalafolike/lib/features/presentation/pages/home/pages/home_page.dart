@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:lalafolike/features/presentation/apptext/app_text.dart';
+import 'package:lalafolike/features/presentation/enams/assets_constants.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/banner.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/categories.dart';
 import 'package:lalafolike/features/presentation/pages/home/widget/featured_new_choose_button.dart';
@@ -94,6 +95,7 @@ class _HomePageState extends State<HomePage> {
                               (product) => InkWell(
                                 onTap: () {},
                                 child: ProductCard(
+                                  image: AssetConstants.car2.png,
                                   price: product['price'],
                                   discountPrice: product['discountPrice'],
                                   vacation: product['vacation'],

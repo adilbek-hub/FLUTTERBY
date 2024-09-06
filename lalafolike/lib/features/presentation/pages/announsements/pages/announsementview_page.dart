@@ -8,11 +8,15 @@ import 'package:lalafolike/features/presentation/pages/announsements/services/lo
 import 'package:lalafolike/features/presentation/pages/announsements/widget/announsementviewprossent.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/caregories_images_cart.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/widget/categories_text_cart.dart';
+import 'package:lalafolike/features/presentation/pages/announsements/widget/media.dart';
 import 'package:lalafolike/router/router.dart';
 
 @RoutePage()
 class AnnounsementviewPage extends StatefulWidget {
-  const AnnounsementviewPage({super.key});
+  const AnnounsementviewPage(
+      {super.key, required this.selectedMedias, required this.categoriesName});
+  final List<Media> selectedMedias;
+  final String categoriesName;
 
   @override
   State<AnnounsementviewPage> createState() => _AnnounsementviewPageState();
@@ -80,6 +84,8 @@ class _AnnounsementviewPageState extends State<AnnounsementviewPage> {
                         thickness: 0.5,
                       ),
                       const SizedBox(height: 6),
+
+                      ///MARK: Media
                       SizedBox(
                         height: 100,
                         child: GridView.builder(
@@ -90,9 +96,10 @@ class _AnnounsementviewPageState extends State<AnnounsementviewPage> {
                             crossAxisSpacing: 1,
                           ),
                           itemBuilder: (context, index) {
-                            return const CategoriesImagesCart();
+                            final Media media = widget.selectedMedias[index];
+                            return CategoriesImagesCart(selectedMedias: media);
                           },
-                          itemCount: 5,
+                          itemCount: widget.selectedMedias.length,
                           scrollDirection: Axis.horizontal,
                         ),
                       ),
@@ -112,10 +119,12 @@ class _AnnounsementviewPageState extends State<AnnounsementviewPage> {
                       SizedBox(
                         height: 40,
                         child: ListView.builder(
-                            itemCount: 4,
+                            itemCount: widget.categoriesName.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              return const CategoriesTextsCart();
+                              return CategoriesTextsCart(
+                                categoryName: widget.categoriesName,
+                              );
                             }),
                       ),
                       const SizedBox(height: 8),
@@ -170,7 +179,7 @@ class _AnnounsementviewPageState extends State<AnnounsementviewPage> {
                         const Align(
                           alignment: Alignment.centerLeft,
                           child: AppText(
-                              title: '+996    999291210',
+                              title: '+996999291210',
                               textType: TextType.body,
                               color: ColorConstants.black),
                         ),

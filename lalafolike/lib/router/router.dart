@@ -8,6 +8,7 @@ import 'package:lalafolike/features/presentation/pages/announsements/pages/annou
 import 'package:lalafolike/features/presentation/pages/announsements/pages/annoutsements_category.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/pages/google_map_page.dart';
 import 'package:lalafolike/features/presentation/pages/announsements/pages/price_page.dart';
+import 'package:lalafolike/features/presentation/pages/announsements/widget/media.dart';
 import 'package:lalafolike/features/presentation/pages/chat/pages/chat_with_user.dart';
 import 'package:lalafolike/features/presentation/pages/chat/pages/chats_page.dart';
 import 'package:lalafolike/features/presentation/pages/chat/pages/notification_page.dart';

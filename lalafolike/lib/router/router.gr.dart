@@ -22,9 +22,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AnnounSementsCategoryRoute.name: (routeData) {
+      final args = routeData.argsAs<AnnounSementsCategoryRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AnnounSementsCategoryPage(),
+        child: AnnounSementsCategoryPage(
+          key: args.key,
+          selectedMedias: args.selectedMedias,
+        ),
       );
     },
     AnnounSementsSubCategoryRoute.name: (routeData) {
@@ -35,6 +39,7 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           subCategoryName: args.subCategoryName,
           subcategory: args.subcategory,
+          selectedMedias: args.selectedMedias,
         ),
       );
     },
@@ -45,9 +50,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AnnounsementviewRoute.name: (routeData) {
+      final args = routeData.argsAs<AnnounsementviewRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AnnounsementviewPage(),
+        child: AnnounsementviewPage(
+          key: args.key,
+          selectedMedias: args.selectedMedias,
+          categoriesName: args.categoriesName,
+        ),
       );
     },
     CategoryDetailRoute.name: (routeData) {
@@ -143,6 +153,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: PricePage(
           key: args.key,
           sunCategoryName: args.sunCategoryName,
+          selectedMedia: args.selectedMedia,
         ),
       );
     },
@@ -205,16 +216,41 @@ class AfterSplashRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AnnounSementsCategoryPage]
-class AnnounSementsCategoryRoute extends PageRouteInfo<void> {
-  const AnnounSementsCategoryRoute({List<PageRouteInfo>? children})
-      : super(
+class AnnounSementsCategoryRoute
+    extends PageRouteInfo<AnnounSementsCategoryRouteArgs> {
+  AnnounSementsCategoryRoute({
+    Key? key,
+    required List<Media> selectedMedias,
+    List<PageRouteInfo>? children,
+  }) : super(
           AnnounSementsCategoryRoute.name,
+          args: AnnounSementsCategoryRouteArgs(
+            key: key,
+            selectedMedias: selectedMedias,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AnnounSementsCategoryRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AnnounSementsCategoryRouteArgs> page =
+      PageInfo<AnnounSementsCategoryRouteArgs>(name);
+}
+
+class AnnounSementsCategoryRouteArgs {
+  const AnnounSementsCategoryRouteArgs({
+    this.key,
+    required this.selectedMedias,
+  });
+
+  final Key? key;
+
+  final List<Media> selectedMedias;
+
+  @override
+  String toString() {
+    return 'AnnounSementsCategoryRouteArgs{key: $key, selectedMedias: $selectedMedias}';
+  }
 }
 
 /// generated route for
@@ -225,6 +261,7 @@ class AnnounSementsSubCategoryRoute
     Key? key,
     required String subCategoryName,
     required List<ChildrenAnnounsement> subcategory,
+    required List<Media> selectedMedias,
     List<PageRouteInfo>? children,
   }) : super(
           AnnounSementsSubCategoryRoute.name,
@@ -232,6 +269,7 @@ class AnnounSementsSubCategoryRoute
             key: key,
             subCategoryName: subCategoryName,
             subcategory: subcategory,
+            selectedMedias: selectedMedias,
           ),
           initialChildren: children,
         );
@@ -247,6 +285,7 @@ class AnnounSementsSubCategoryRouteArgs {
     this.key,
     required this.subCategoryName,
     required this.subcategory,
+    required this.selectedMedias,
   });
 
   final Key? key;
@@ -255,9 +294,11 @@ class AnnounSementsSubCategoryRouteArgs {
 
   final List<ChildrenAnnounsement> subcategory;
 
+  final List<Media> selectedMedias;
+
   @override
   String toString() {
-    return 'AnnounSementsSubCategoryRouteArgs{key: $key, subCategoryName: $subCategoryName, subcategory: $subcategory}';
+    return 'AnnounSementsSubCategoryRouteArgs{key: $key, subCategoryName: $subCategoryName, subcategory: $subcategory, selectedMedias: $selectedMedias}';
   }
 }
 
@@ -277,16 +318,45 @@ class AnnouncementsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AnnounsementviewPage]
-class AnnounsementviewRoute extends PageRouteInfo<void> {
-  const AnnounsementviewRoute({List<PageRouteInfo>? children})
-      : super(
+class AnnounsementviewRoute extends PageRouteInfo<AnnounsementviewRouteArgs> {
+  AnnounsementviewRoute({
+    Key? key,
+    required List<Media> selectedMedias,
+    required String categoriesName,
+    List<PageRouteInfo>? children,
+  }) : super(
           AnnounsementviewRoute.name,
+          args: AnnounsementviewRouteArgs(
+            key: key,
+            selectedMedias: selectedMedias,
+            categoriesName: categoriesName,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AnnounsementviewRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AnnounsementviewRouteArgs> page =
+      PageInfo<AnnounsementviewRouteArgs>(name);
+}
+
+class AnnounsementviewRouteArgs {
+  const AnnounsementviewRouteArgs({
+    this.key,
+    required this.selectedMedias,
+    required this.categoriesName,
+  });
+
+  final Key? key;
+
+  final List<Media> selectedMedias;
+
+  final String categoriesName;
+
+  @override
+  String toString() {
+    return 'AnnounsementviewRouteArgs{key: $key, selectedMedias: $selectedMedias, categoriesName: $categoriesName}';
+  }
 }
 
 /// generated route for
@@ -549,12 +619,14 @@ class PriceRoute extends PageRouteInfo<PriceRouteArgs> {
   PriceRoute({
     Key? key,
     required String sunCategoryName,
+    required List<Media> selectedMedia,
     List<PageRouteInfo>? children,
   }) : super(
           PriceRoute.name,
           args: PriceRouteArgs(
             key: key,
             sunCategoryName: sunCategoryName,
+            selectedMedia: selectedMedia,
           ),
           initialChildren: children,
         );
@@ -568,15 +640,18 @@ class PriceRouteArgs {
   const PriceRouteArgs({
     this.key,
     required this.sunCategoryName,
+    required this.selectedMedia,
   });
 
   final Key? key;
 
   final String sunCategoryName;
 
+  final List<Media> selectedMedia;
+
   @override
   String toString() {
-    return 'PriceRouteArgs{key: $key, sunCategoryName: $sunCategoryName}';
+    return 'PriceRouteArgs{key: $key, sunCategoryName: $sunCategoryName, selectedMedia: $selectedMedia}';
   }
 }
 
